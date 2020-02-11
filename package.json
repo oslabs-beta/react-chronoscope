@@ -1,0 +1,33 @@
+{
+  "name": "react-chronoscope",
+  "version": "1.0.0",
+  "description": "React ChronoScope",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start" : "NODE_ENV=production nodemon main.js",
+    "build" : "NODE_ENV=production webpack",
+    "dev" : "NODE_DEV=development webpack-dev-server & nodemon main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ChronoScope",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  },
+  "dependencies": {
+    "html-loader": "^0.5.5",
+    "lodash": "^4.17.15",
+    "nodemon": "^2.0.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
+  }
+}
