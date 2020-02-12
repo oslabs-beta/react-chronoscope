@@ -6,6 +6,7 @@ module.exports = {
   entry: {
     contentscript: path.join(__dirname, './src/contentscript/contentscript.ts'), // path.resolve(__dirname, './src/index.tsx'),
     backgroundscript: path.join(__dirname, './src/background/backgroundscript.ts'),
+    devtools: path.join(__dirname, './src/devtools/devtools.ts'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
