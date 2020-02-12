@@ -4,6 +4,7 @@
   "description": "React ChronoScope",
   "main": "webpack.config.js",
   "scripts": {
+    "clean": "rm -rf dist && cpy manifest.json dist && cpy src/assets/* dist/assets",
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_DEV=development webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,14 +16,16 @@
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
     "babel-loader": "^8.0.6",
-    "html-loader": "^0.5.5",
+    "cpy-cli": "^3.0.0",
     "css-loader": "^3.4.2",
+    "html-loader": "^0.5.5",
     "sass-loader": "^8.0.2",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1"
+    "webpack-dev-server": "^3.10.1",
+    "sass": "^1.25.0"
   },
   "dependencies": {
     "@types/chrome": "0.0.95",

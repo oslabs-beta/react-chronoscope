@@ -2,17 +2,20 @@ const path = require('path');
 
 module.exports = {
   // TODO: change the path
-  entry: path.resolve(__dirname, './src/index.tsx'),
+  entry: {
+    contentscript: path.join(__dirname, './src/contentscript/contentscript.ts'), // path.resolve(__dirname, './src/index.tsx'),
+    backgroundscript: path.join(__dirname, './src/background/backgroundscript.ts'),
+  },
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
   },
   devServer: {
     publicPath: '/build/',
   },
   mode: process.env.NODE_ENV,
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx'], // do we have to add styling? .scss / .css
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.scss'], // do we have to add styling? .scss / .css
   },
   module: {
     rules: [
