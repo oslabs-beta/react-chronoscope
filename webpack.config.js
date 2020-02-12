@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   // TODO: change the path
@@ -15,7 +16,7 @@ module.exports = {
   },
   mode: process.env.NODE_ENV,
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.scss'], // do we have to add styling? .scss / .css
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   module: {
     rules: [
@@ -38,8 +39,8 @@ module.exports = {
         },
       },
       {
-        test: /\.(s*)(a|c)ss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.(sa|sc|c)ss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
@@ -51,6 +52,12 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+  ],
   externals: {
     react: 'React',
     'react-dom': 'ReactDOM',
