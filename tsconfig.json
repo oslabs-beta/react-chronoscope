@@ -5,6 +5,23 @@
         "noImplicitAny": false,
         "module": "commonjs",
         "target": "es6",
-        "jsx": "react"
+        "jsx": "react",
+        "types": ["@types/chrome"],
     }
 }
+
+/*  https://medium.com/better-programming/create-a-chrome-extension-using-react-and-typescript-50e94e14320c
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "sourceMap": false,
+    "types": ["@types/chrome", "node"],
+    "typeRoots": ["node_modules/@types"],
+    "moduleResolution": "node",
+    "lib": ["es2017", "dom"]
+  },
+  "include": ["src/background", "src/contentscript"]
+}
+*/

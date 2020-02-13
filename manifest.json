@@ -13,13 +13,14 @@
           "<all_urls>"
         ],
         "js": [
-          "contentScript.js"
-        ]
+          "contentscript.js"
+        ],
+        "css": ["contentscript.css"]
       }
     ],
     "background": {
       "scripts": [
-        "backgroundScript.js"
+        "backgroundscript.js"
       ],
       "persistant": true
     },
@@ -30,8 +31,5 @@
       "ids": [
         "*"
       ]
-    },
-    "icons": {
-      "128": "ChronoScope.png"
     }
-  }
+}
