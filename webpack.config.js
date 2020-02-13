@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   // TODO: change the path
@@ -7,6 +8,7 @@ module.exports = {
     contentscript: path.join(__dirname, './src/contentscript/contentscript.ts'), // path.resolve(__dirname, './src/index.tsx'),
     backgroundscript: path.join(__dirname, './src/background/backgroundscript.ts'),
     devtools: path.join(__dirname, './src/devtools/devtools.ts'),
+    bundle: path.join(__dirname, './src/index.tsx'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -58,11 +60,22 @@ module.exports = {
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
+    new HtmlWebpackPlugin({
+      title: 'React-ChronoScope',
+      filename: 'index.html',
+      template: 'src/index.html',
+      chunks: ['bundle'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'devtools.html',
+      template: 'src/devtools/devtools.html',
+      chunks: ['devtools'],
+    }),
   ],
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-  },
+  // externals: {
+  //   react: 'React',
+  //   'react-dom': 'ReactDOM',
+  // },
   // addition - add source-map support
   devtool: 'source-map',
 };

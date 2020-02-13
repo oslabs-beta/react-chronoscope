@@ -1,1 +1,1 @@
-{"version":3,"sources":["webpack:///./src/contentscript/contentscript.scss"],"names":[],"mappings":"AAAA,KAAK","file":"contentscript.css","sourcesContent":["body{padding:1px}\n"],"sourceRoot":""}
+{"version":3,"sources":["webpack:///./src/contentscript/contentscript.scss"],"names":[],"mappings":"AAAA,KAAK,YAAY","file":"contentscript.css","sourcesContent":["body{padding:1px;background-color:126}\n"],"sourceRoot":""}
