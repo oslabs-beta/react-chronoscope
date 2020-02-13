@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
-        "outDir": "./build/",
+        // "outDir": "./build/",
         "sourceMap": true,
         "noImplicitAny": false,
         "module": "commonjs",
         "target": "es6",
         "jsx": "react",
         "types": ["@types/chrome"],
-
+        "allowSyntheticDefaultImports": true, // allows default import statements "import React from "react";" instead of "import * as React from "react";"
     }
 }
 
