@@ -1,5 +1,7 @@
 import * as React from "react";
-import  Test from "./Test";
+import  TreeGraph from "./TreeGraph";
+import LineGraph from "./LineGraph"
+
 
 
 export interface HelloProps { compiler: string; framework: string; };
@@ -7,11 +9,14 @@ export interface HelloProps { compiler: string; framework: string; };
 export const App = (props: HelloProps) => {
   return (
     <div>
-     <Test/>
-
     <h1>Hello from {props.compiler} and {props.framework}!</h1>
-
-
+    <div id='treeGraphDiv' style={{'margin-left': '0.5em', width: '40%', height: '75%', 'background-color': 'red',}}>
+     <TreeGraph/>
+    </div>
+    <div id='lineGraphDiv' style={{'margin-left': '0.5em', 'background-color': 'blue'}}>
+     <LineGraph/>
+    </div>
+    <h2 style={{width: '10px'}}>Test Test</h2>
     </div>
     )
 }

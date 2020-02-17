@@ -31,5 +31,9 @@
       "ids": [
         "*"
       ]
+    },
+    "icons": {  "16": "./assets/ChronoScope16.png",
+                "48": "./assets/ChronoScope48.png",
+                "128": "./assets/ChronoScope128.png" 
     }
 }
