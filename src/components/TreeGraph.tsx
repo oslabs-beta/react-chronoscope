@@ -23,6 +23,17 @@ const myTreeData = [
 ];
 
   class TreeGraph extends React.Component {
+    componentDidMount() {
+      console.log('TreeGraph mounted');
+      // open connection with background script
+      const port = chrome.runtime.connect();
+
+      // listen for a message containing snapshots from the background script
+      port.onMessage.addListener(message => {
+        console.log('This is message from TreeGraph componentDidMound - port message: ', message);
+      })
+    }
+
     render() {
       return (
         // <div id="treeWrapper" style={{width: '50em', height: '20em'}}>
