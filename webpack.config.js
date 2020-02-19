@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     contentScript: path.join(__dirname, './src/contentScript/contentScript.ts'), // path.resolve(__dirname, './src/index.tsx'),
     backgroundScript: path.join(__dirname, './src/backgroundScript/backgroundScript.ts'),
+    inject: path.join(__dirname, './src/inject.ts'),
     devtools: path.join(__dirname, './src/devtools/devtools.ts'),
     bundle: path.join(__dirname, './src/index.tsx'),
   },

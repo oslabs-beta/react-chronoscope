@@ -10,7 +10,7 @@ export const App = (props: HelloProps) => {
   return (
     <div>
     <h1>Hello from {props.compiler} and {props.framework}!</h1>
-    <div id='treeGraphDiv' style={{'margin-left': '0.5em', width: '40%', height: '75%', 'background-color': 'red',}}>
+    <div id='treeGraphDiv' style={{'margin-left': '0.5em', 'height': '500px', 'background-color': 'white',}}>
      <TreeGraph/>
     </div>
     <div id='lineGraphDiv' style={{'margin-left': '0.5em', 'background-color': 'blue'}}>
