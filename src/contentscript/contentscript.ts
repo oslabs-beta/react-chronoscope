@@ -1,4 +1,4 @@
-//import './contentScript.scss';
+import './contentScript.scss';
 
 // Create a connection with backgroundScript.
 

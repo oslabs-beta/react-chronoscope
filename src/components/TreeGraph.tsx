@@ -24,6 +24,11 @@ const myTreeData = [
 const myTreeData2 = [
   {
     name: 'App',
+    nodeSvgShape: {
+      shapeProps: {
+        fill : 'blue',
+      },
+    },
     children: [
       {
         name: 'Table',
@@ -34,6 +39,12 @@ const myTreeData2 = [
 ]
 
 let treeGraphData = myTreeData2;
+ 
+let svgSquare = {
+  shapeProps: {
+    fill : 'white'
+  }
+}
 
 interface Props {};
 interface State {
@@ -72,7 +83,7 @@ interface State {
         // <div id="treeWrapper" style={{width: '50em', height: '20em'}}>
         <div id='treeGraph' style={{'height': '500px'}}>
 
-        <Tree data={this.state.data} orientation="vertical" translate={{ x: 100, y: 20}}/>
+        <Tree data={this.state.data} orientation="vertical" translate={{ x: 300, y: 20}} zoom={0.45}/>
   
         </div>
       );
