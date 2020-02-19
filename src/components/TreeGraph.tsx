@@ -21,23 +21,31 @@ const myTreeData = [
   },
 ];
 
-  class TreeGraph extends React.Component {
+const myTreeData2 = [
+  {
+    name: 'App',
+    children: [
+      {
+        name: 'Table',
+        children: []
+      }
+    ]
+  }
+]
 
-    // componentDidMount() {
-    //   // const port = chrome.runtime.connect({name: "tree"});
-    //   // port.onMessage.addListener((msg) => {
-    //   //   console.log(msg);
-    //   // });
-    //   // chrome.runtime.onMessage.addListener((msg) => {
-    //   //   console.log(msg);
-    //   // })
+let treeGraphData = myTreeData2;
 
-    //   // window.addEventListener("message", receiveMessage, false);
+interface Props {};
+interface State {
+  data: object;
+}
 
-    //   // function receiveMessage(event) {
-    //   //   console.log(event);
-    //   // }
-    // }
+  class TreeGraph extends React.Component <Props, State> {
+
+    state: State = {
+      data : treeGraphData
+    };
+
     componentDidMount() {
       setTimeout(() => {
         console.log('TreeGraph mounted');
@@ -45,7 +53,15 @@ const myTreeData = [
         const port = chrome.runtime.connect();
         // listen for a message containing snapshots from the background script
         port.onMessage.addListener(message => {
-          console.log('This is message from TreeGraph componentDidMound - port message: ', message);
+          console.log('This is message from TreeGraph componentDidMount - port message: ', message);
+          treeGraphData = [message.payload.payload];
+
+          this.setState({
+            data: treeGraphData
+          });
+
+          console.log('Formatted: ', treeGraphData);
+          console.log('myTreeData2: ', myTreeData2);
         })
       }, 2000);
     }
@@ -56,7 +72,7 @@ const myTreeData = [
         // <div id="treeWrapper" style={{width: '50em', height: '20em'}}>
         <div id='treeGraph' style={{'height': '500px'}}>
 
-        <Tree data={myTreeData} orientation="vertical" translate={{ x: 100, y: 20}}/>
+        <Tree data={this.state.data} orientation="vertical" translate={{ x: 100, y: 20}}/>
   
         </div>
       );
