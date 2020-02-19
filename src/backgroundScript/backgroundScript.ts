@@ -17,7 +17,7 @@ console.log('background script running');
 
 chrome.runtime.onMessage.addListener(msg => {
   console.log('From ContentScript: ', msg);
-  console.log('Parsed Data: ', JSON.parse(msg));
+  console.log('Parsed Data: ', JSON.parse(msg.payload));
 });
 
 console.log('after onConnect');
