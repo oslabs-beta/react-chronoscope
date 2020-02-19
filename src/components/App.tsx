@@ -10,7 +10,7 @@ export interface TitleProps { compiler: string; framework: string; };
 export const App = (props: TitleProps) => {
   return (
     <div>
-    <img src="ChronoScope.png"></img>
+    {/* <img src="ChronoScope.png"></img> */}
     <h1 style={{textAlign : "center", fontSize: "28px"}}>React ChronoScope</h1>
     <hr style={{border: "2px solid black"}}></hr>
     <h2>Tree Diagram</h2>
@@ -19,9 +19,9 @@ export const App = (props: TitleProps) => {
     </div>
     <hr style={{border: "2px solid black"}}></hr>
     <div id='lineGraphDiv'>
+     <h2>TimeLine</h2>
      <LineGraph/>
     </div>
-    <h2 style={{width: '10px'}}>Test Test</h2>
     </div>
     )
 }
