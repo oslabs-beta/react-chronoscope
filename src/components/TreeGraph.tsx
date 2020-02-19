@@ -23,20 +23,31 @@ const myTreeData = [
 
   class TreeGraph extends React.Component {
 
+    // componentDidMount() {
+    //   // const port = chrome.runtime.connect({name: "tree"});
+    //   // port.onMessage.addListener((msg) => {
+    //   //   console.log(msg);
+    //   // });
+    //   // chrome.runtime.onMessage.addListener((msg) => {
+    //   //   console.log(msg);
+    //   // })
+
+    //   // window.addEventListener("message", receiveMessage, false);
+
+    //   // function receiveMessage(event) {
+    //   //   console.log(event);
+    //   // }
+    // }
     componentDidMount() {
-      // const port = chrome.runtime.connect({name: "tree"});
-      // port.onMessage.addListener((msg) => {
-      //   console.log(msg);
-      // });
-      // chrome.runtime.onMessage.addListener((msg) => {
-      //   console.log(msg);
-      // })
-
-      // window.addEventListener("message", receiveMessage, false);
-
-      // function receiveMessage(event) {
-      //   console.log(event);
-      // }
+      setTimeout(() => {
+        console.log('TreeGraph mounted');
+        // open connection with background script
+        const port = chrome.runtime.connect();
+        // listen for a message containing snapshots from the background script
+        port.onMessage.addListener(message => {
+          console.log('This is message from TreeGraph componentDidMound - port message: ', message);
+        })
+      }, 2000);
     }
 
     render() {
