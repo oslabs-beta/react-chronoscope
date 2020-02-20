@@ -17,8 +17,8 @@ console.log('background script running');
 let treeGraph; 
 
 chrome.runtime.onMessage.addListener(msg => {
-  console.log('From ContentScript: ', msg);
-  console.log('Parsed Data: ', JSON.parse(msg.payload));
+  //console.log('From ContentScript: ', msg);
+  //console.log('Parsed Data: ', JSON.parse(msg.payload));
   treeGraph = JSON.parse(msg.payload);
 });
 
@@ -33,7 +33,9 @@ chrome.runtime.onConnect.addListener(port => {
   port.onMessage.addListener(msg => {
     const { tabId } = msg;
     chrome.tabs.sendMessage(tabId, msg);
-    console.log('message from background script', msg);
+    //console.log('message from background script', msg);
+
+
     // port.postMessage({
     //   // action: 'initialConnectSnapshots',
     //   payload: msg, 
