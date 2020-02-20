@@ -83,7 +83,7 @@ interface State {
         // <div id="treeWrapper" style={{width: '50em', height: '20em'}}>
         <div id='treeGraph' style={{'height': '500px'}}>
 
-        <Tree data={this.state.data} orientation="vertical" translate={{ x: 300, y: 20}} zoom={0.45}/>
+        <Tree data={this.state.data} orientation="vertical" translate={{ x: 300, y: 20}} zoom={0.45}/>>
   
         </div>
       );
