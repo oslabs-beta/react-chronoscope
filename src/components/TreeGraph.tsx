@@ -26,7 +26,7 @@ const myTreeData2 = [
     name: 'App',
     nodeSvgShape: {
       shapeProps: {
-        fill : 'blue',
+        fill : '#8FBC8F',
       },
     },
     children: [
