@@ -3,7 +3,7 @@
     "name": "React ChronoScope",
     "version": "1.0.0",
     "devtools_page": "devtools.html",
-    "permissions": ["contextMenus", "tabs", "<all_urls>"],
+    "permissions": ["activeTab"],
     "content_scripts": [
       {
         "matches": ["<all_urls>"],

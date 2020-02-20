@@ -40,6 +40,8 @@ interface State {
   data: object;
 }
 
+let tempData;
+
 class TreeGraph extends React.PureComponent <Props, State> {
 
   state: State = {
@@ -66,22 +68,39 @@ class TreeGraph extends React.PureComponent <Props, State> {
     }, 2000);
   }
 
+  // componentDidUpdate() {
+  //   setTimeout(() => {
+  //     console.log('TreeGraph mounted');
+  //     // open connection with background script
+  //     const port = chrome.runtime.connect();
+  //     // listen for a message containing snapshots from the background script
+  //     port.onMessage.addListener(message => {
+  //       console.log('UPDATE- port message: ', message);
+  //       treeGraphData = [message.payload.payload];
+
+  //       this.setState({
+  //         data: treeGraphData
+  //       });
+
+  //       console.log('Formatted: ', treeGraphData);
+  //       console.log('myTreeData2: ', myTreeData2);
+  //     })
+  //   }, 2000);
+  // }
+
   componentDidUpdate() {
-    setTimeout(() => {
-      console.log('TreeGraph mounted');
+    setInterval(() => {
       // open connection with background script
       const port = chrome.runtime.connect();
-      // listen for a message containing snapshots from the background script
       port.onMessage.addListener(message => {
-        console.log('UPDATE- port message: ', message);
-        treeGraphData = [message.payload.payload];
-
-        this.setState({
-          data: treeGraphData
-        });
-
-        console.log('Formatted: ', treeGraphData);
-        console.log('myTreeData2: ', myTreeData2);
+        tempData = [message.payload.payload];
+        if (JSON.stringify(tempData) !== JSON.stringify(treeGraphData)) {
+          treeGraphData = tempData;
+          console.log('TreeGraph componentDidUpdate: ', treeGraphData);
+          this.setState({
+            data: treeGraphData
+          });
+        }
       })
     }, 2000);
   }
