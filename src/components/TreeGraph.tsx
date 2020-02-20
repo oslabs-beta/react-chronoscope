@@ -49,11 +49,11 @@ class TreeGraph extends React.PureComponent <Props, State> {
   };
 
   componentDidMount() {
-    setTimeout(() => {
+    // setTimeout(() => {
       console.log('TreeGraph mounted');
       // open connection with background script
       const port = chrome.runtime.connect();
-      // listen for a message containing snapshots from the background script
+      // listen for a message from the background script
       port.onMessage.addListener(message => {
         console.log('This is message from TreeGraph componentDidMount - port message: ', message);
         treeGraphData = [message.payload.payload];
@@ -65,7 +65,11 @@ class TreeGraph extends React.PureComponent <Props, State> {
         console.log('Formatted: ', treeGraphData);
         console.log('myTreeData2: ', myTreeData2);
       })
-    }, 2000);
+    // }, 0);
+    port.onDisconnect.addListener(() => {
+      // disconnecting
+      console.log('disconnected');
+    });
   }
 
   // componentDidUpdate() {
@@ -93,6 +97,7 @@ class TreeGraph extends React.PureComponent <Props, State> {
       // open connection with background script
       const port = chrome.runtime.connect();
       port.onMessage.addListener(message => {
+        console.log('TreeGraph componentDidUpdate outside: ', treeGraphData);
         tempData = [message.payload.payload];
         if (JSON.stringify(tempData) !== JSON.stringify(treeGraphData)) {
           treeGraphData = tempData;
@@ -102,7 +107,7 @@ class TreeGraph extends React.PureComponent <Props, State> {
           });
         }
       })
-    }, 2000);
+    }, 200);
   }
 
   render() {
