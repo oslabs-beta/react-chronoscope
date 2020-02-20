@@ -36,6 +36,7 @@ const myTreeData2 = [
 let treeGraphData = myTreeData2;
 let tempData;
 
+
 interface Props {};
 interface State {
   data: object;
@@ -82,13 +83,16 @@ interface State {
     render() {
 
       return (
-        // <div id="treeWrapper" style={{width: '50em', height: '20em'}}>
-        <div id='treeGraph' style={{'height': '500px'}}>
+        <div>
+          <div id='treeGraph' style={{'height': '500px'}}>
+            <Tree data={this.state.data} orientation="vertical" translate={{ x: 100, y: 20}}/>
+          </div>,
 
-        <Tree data={this.state.data} orientation="vertical" translate={{ x: 100, y: 20}}/>
-  
+          <div id='timeLine'>
+
+          </div>
         </div>
-      );
+      )
     }
   }
 
