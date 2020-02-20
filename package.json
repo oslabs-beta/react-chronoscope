@@ -33,7 +33,10 @@
   },
   "dependencies": {
     "@types/chrome": "0.0.95",
+    "@types/react": "^16.9.20",
+    "@types/react-dom": "^16.9.5",
     "react": "^16.5.2",
+    "react-d3-tree": "^1.16.1",
     "react-dom": "^16.5.2",
     "react-router-dom": "^4.3.1"
   }
