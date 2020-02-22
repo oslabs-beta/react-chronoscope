@@ -1,54 +1,27 @@
-// const connectedPort = {};
+//Checking to make sure background script is being run
+console.log('Background Script Running');
 
-// Check to see if connection is from content script
-// chrome.runtime.onConnect.addListener((port) => {
-//   if (port.name !== 'portConnection') {
-//     return;
-//   }
-// });
+//Typescript interface for Indexable Types. Message from ContentScript.
+interface MessageFromContent {
+  action: string;
+  payload: string;
+}
 
-console.log('background script running');
-
-// chrome.runtime.onConnect.addListener(request => {
-//   console.log('BackgroundScript Request', request);
-//   // console.log('BackgroundScript Sender', sender);
-// });
-
+//Create Variable to store tree structure data from content script; 
 let treeGraph; 
 
 // listen for message from contentScript
-chrome.runtime.onMessage.addListener(msg => {
-  console.log('From ContentScript: ', msg);
-  console.log('Parsed Data: ', JSON.parse(msg.payload));
+chrome.runtime.onMessage.addListener((msg: MessageFromContent) => {
+  console.log('Parsed Data from ContentScript: ', JSON.parse(msg.payload));
   treeGraph = JSON.parse(msg.payload);
 });
 
-const portsArr = [];
-// listen for connection from the extension app
+// listen for connection from the chrome dev tool;
 chrome.runtime.onConnect.addListener(port => {
-  // portsArr.push(port);
-  // post the message to the extension app
-  // we are getting this in the React app
-  console.log('port', port);
-  // portsArr.forEach(port => port.postMessage({
-  //   // action: 'initialConnectSnapshots',
-  //   payload: treeGraph, 
-  // }));
+  //Once connected. Background Script will send message to Chrome Dev Tool.
   port.postMessage({
-    // action: 'initialConnectSnapshots',
+    // action: 'BackgroundToChromeDevTool',
     payload: treeGraph, 
   })
-
-  // // receive snapshot from devtools and send it to contentScript -
-  // port.onMessage.addListener(msg => {
-  //   const { tabId } = msg;
-  //   chrome.tabs.sendMessage(tabId, msg);
-  //   console.log('message from background script', msg);
-  //   // port.postMessage({
-  //   //   // action: 'initialConnectSnapshots',
-  //   //   payload: msg, 
-  //   // });
-  // });
 });
 
-console.log('after onConnect');
