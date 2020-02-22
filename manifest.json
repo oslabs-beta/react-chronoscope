@@ -15,7 +15,6 @@
       "scripts": ["backgroundscript.js"],
       "persistant": false
     },
-    "web_accessible_resources": ["inject.js"],
     "externally_connectable": {
       "ids": ["*"]
     },
