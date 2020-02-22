@@ -62,8 +62,8 @@ class TreeGraph extends React.PureComponent <Props, State> {
           data: treeGraphData
         });
 
-        console.log('Formatted: ', treeGraphData);
-        console.log('myTreeData2: ', myTreeData2);
+        // console.log('Formatted: ', treeGraphData);
+        // console.log('myTreeData2: ', myTreeData2);
       })
     // }, 0);
     port.onDisconnect.addListener(() => {
@@ -113,12 +113,11 @@ class TreeGraph extends React.PureComponent <Props, State> {
   render() {
 
     return (
-      // <div id="treeWrapper" style={{width: '50em', height: '20em'}}>
       <div id='treeGraph' style={{'height': '500px'}}>
 
-      <Tree data={this.state.data} orientation="vertical" translate={{ x: 100, y: 20}}/>
-
-      </div>
+        <Tree data={this.state.data} orientation="vertical" translate={{ x: 300, y: 20}} zoom={0.45}/>
+  
+        </div>
     );
   }
 }
