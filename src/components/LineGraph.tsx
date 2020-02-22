@@ -18,26 +18,6 @@ const options = {
   verticalScroll: true,
   // editable: true,
 };
-const items2 = [
-  {
-    start: new Number(2),
-    end: new Number(5), // end is optional
-    content: "test1",
-  },
-  {
-    start: new Number(1),
-    end: new Number(2), // end is optional
-    content: "test2",
-  },
-  {start: new Number(3),
-    end: new Number(4), // end is optional
-    content: "test3"
-  },
-  {start: new Number(5),
-   end: new Number(9),
-   content: 'newtest'
-  }
-];
 
 interface event {
   title: string,
@@ -63,15 +43,12 @@ function getData(Node) {
     })
   }
 }
-
-
-interface Props {};
 interface State {
   data: object[],
   render: boolean
 }
 
-class LineGraph extends React.Component <Props, State>{
+class LineGraph extends React.Component <{}, State>{
 
   state: State = {
     data : items, 
@@ -79,32 +56,20 @@ class LineGraph extends React.Component <Props, State>{
   };
 
   componentDidMount() {
-    console.log('Timeline mounted');
     // open connection with background script
     const port = chrome.runtime.connect();
     // listen for a message from the background script
     port.onMessage.addListener(message => {
-      console.log('This is message from Timeline componentDidMount - port message: ', message);
-      // console.log('Data before settings state: ', this.state.data);
-      // getData(message.payload.payload.children[0]);
-      // console.log('Timeline information: ', items);
-      
       setTimeout(() => { 
-        console.log('BEFORE: ', this.state.data);
         getData(message.payload.payload.children[0]);
         this.setState({ 
           data: items,
           render: true
         });
-        console.log('AFTER: ', this.state.data);
       }, 200)
-
-      // console.log('Data after setting state: ', this.state.data);
-
+       // abort connection
+       port.disconnect();
     })
-    port.onDisconnect.addListener(() => {
-      console.log('disconnected');
-    });
   }
 
   // componentDidUpdate() {
@@ -129,7 +94,6 @@ class LineGraph extends React.Component <Props, State>{
   //   //   })
   //   }, 20000);
   // }
-
 
     render() {
       return (

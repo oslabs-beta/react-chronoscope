@@ -28,19 +28,15 @@
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
     "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1"
+    "webpack-cli": "^3.3.10"
   },
   "dependencies": {
     "@types/chrome": "0.0.95",
     "@types/react": "^16.9.20",
     "@types/react-dom": "^16.9.5",
     "react": "^16.5.2",
-    "react-apexcharts": "^1.3.6",
-    "react-chronos": "^1.0.5",
     "react-d3-tree": "^1.16.1",
     "react-dom": "^16.5.2",
-    "react-router-dom": "^4.3.1",
     "react-visjs-timeline": "^1.6.0",
     "vis-timeline": "^7.1.3"
   }
