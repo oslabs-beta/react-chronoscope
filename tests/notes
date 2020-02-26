@@ -1,0 +1,21 @@
+To debug TypeScript tests, the json specified under “VS Code debug”
+section below in the story need to be added under configurations in
+launch.json which can be created by going to Debug Menu and then Add
+Configuration in VS Code.
+
+<- Hit Debug Tab in VSCode
+< - select node.js
+<- edit your launch.json file with the code below
+
+{
+      "type": "node",
+      "request": "launch",
+      "name": "Jest Current File",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["${relativeFile}"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      }
+}
