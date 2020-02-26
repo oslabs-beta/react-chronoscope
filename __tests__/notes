@@ -23,5 +23,6 @@ Configuration in VS Code.
 Links:
 Jest - https://jestjs.io/docs/en/getting-started
 Jest & TS - https://medium.com/@RupaniChirag/writing-unit-tests-in-typescript-d4719b8a0a40
+Testing React with Jest & Enzyme - https://medium.com/codeclan/testing-react-with-jest-and-enzyme-20505fec4675
 (this one has the real juice -m ) Enzyme & Jest & TS - https://medium.com/@tejasupmanyu/setting-up-unit-tests-in-react-typescipt-with-jest-and-enzyme-56634e54703
 What and How - https://djangostars.com/blog/what-and-how-to-test-with-enzyme-and-jest-full-instruction-on-react-component-testing/

@@ -13,3 +13,18 @@ import TreeGraph from '../src/components/TreeGraph';
 // Newer Enzyme versions require an adapter to a particular version of React
 Enzyme.configure({ adapter: new Adapter() });
 
+describe('React-ChronoScope Component Tests', () => {
+  describe('Component: App', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = Enzyme.shallow(<App/>);
+    });
+
+    it('Renders a <p> tag with the label in bold', () => {
+      expect(wrapper.type()).toEqual('p');
+      expect(wrapper.text()).toEqual('Mega: Markets');
+      expect(wrapper.find('strong').text()).toMatch('Mega');
+    });
+  })
+});

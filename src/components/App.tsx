@@ -1,9 +1,6 @@
 import * as React from "react";
 import TreeGraph from "./TreeGraph";
 import LineGraph from "./LineGraph"
-// import { Hello } from './Hello.jsx';
-
-
 
 export interface HelloProps { compiler: string; framework: string; };
 

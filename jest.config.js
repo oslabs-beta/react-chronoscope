@@ -1,8 +1,13 @@
 module.exports = {
-  transform: { '^.+\\.ts?$': 'ts-jest' },
+  transform: {
+    '\\.(ts|tsx)$': '<rootDir>/node_modules/ts-jest/preprocessor.js',
+  },
   testEnvironment: 'node',
-  testRegex: '/__tests__/.*\\.(test|spec)?\\.(ts|tsx)$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  setupFiles: [
+    'raf/polyfill',
+  ],
+  testRegex: '/__tests__/.*\\.(ts|tsx|js)$',
   snapshotSerializers: ['enzyme-to-json/serializer'],
   setupFilesAfterEnv: ['<rootDir>/__tests__/enzyme.ts'],
 };
