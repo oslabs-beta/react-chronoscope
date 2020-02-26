@@ -19,3 +19,8 @@ Configuration in VS Code.
         "program": "${workspaceFolder}/node_modules/jest/bin/jest"
       }
 }
+
+Links:
+Jest - https://jestjs.io/docs/en/getting-started
+Jest & TS - https://medium.com/@RupaniChirag/writing-unit-tests-in-typescript-d4719b8a0a40
+(this one has the real juice -m ) Enzyme & Jest & TS - https://medium.com/@tejasupmanyu/setting-up-unit-tests-in-react-typescipt-with-jest-and-enzyme-56634e54703
