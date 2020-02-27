@@ -1,6 +1,6 @@
 module.exports = {
   transform: {
-    '\\.(ts|tsx)$': '<rootDir>/node_modules/ts-jest/preprocessor.js',
+    '\\.(ts|tsx)$': 'ts-jest',
   },
   testEnvironment: 'node',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
@@ -9,5 +9,5 @@ module.exports = {
   ],
   testRegex: '/__tests__/.*\\.(ts|tsx|js)$',
   snapshotSerializers: ['enzyme-to-json/serializer'],
-  setupFilesAfterEnv: ['<rootDir>/__tests__/enzyme.ts'],
+  setupFilesAfterEnv: ['<rootDir>/__tests__/setupEnzyme.ts'],
 };

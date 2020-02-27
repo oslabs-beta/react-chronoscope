@@ -1,12 +1,13 @@
+// import { App } from './../src/components/App';
 import * as React from 'react';
-import * as Enzyme from "enzyme";
+// import * as Enzyme from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
-// import { configure, shallow } from 'enzyme';
+import * as Enzyme from 'enzyme';
 // import toJson from 'enzyme-to-json';
 
 // Enzyme is a wrapper around React test utilities which makes it easier to
 // shallow render and traverse the shallow rendered tree.
-import { App } from '../src/components/App';
+import * as App from '../src/components/App';
 import LineGraph from '../src/components/LineGraph';
 import TreeGraph from '../src/components/TreeGraph';
 
@@ -18,7 +19,7 @@ describe('React-ChronoScope Component Tests', () => {
     let wrapper;
 
     beforeAll(() => {
-      wrapper = Enzyme.shallow(<App/>);
+      wrapper = Enzyme.shallow(<LineGraph/>);
     });
 
     it('Renders a <p> tag with the label in bold', () => {
@@ -26,5 +27,5 @@ describe('React-ChronoScope Component Tests', () => {
       expect(wrapper.text()).toEqual('Mega: Markets');
       expect(wrapper.find('strong').text()).toMatch('Mega');
     });
-  })
+  });
 });

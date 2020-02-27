@@ -7,6 +7,7 @@
         "target": "es6",
         "jsx": "react",
         "types": ["@types/chrome", "@types/react", "@types/react-dom", "@types/node", "@types/jest", "@types/enzyme"],
+        "esModuleInterop": true,
     }
 }
 

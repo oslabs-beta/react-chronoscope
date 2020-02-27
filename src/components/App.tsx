@@ -2,9 +2,9 @@ import * as React from "react";
 import TreeGraph from "./TreeGraph";
 import LineGraph from "./LineGraph"
 
-export interface HelloProps { compiler: string; framework: string; };
+// export interface HelloProps { compiler: string; framework: string; };
 
-export const App = (props: HelloProps) => {
+const App = (/*props: HelloProps*/) => {
   return (
     // <div>
     //   {/* <Hello /> */}
@@ -34,3 +34,4 @@ export const App = (props: HelloProps) => {
     )
 }
 
+export default App;
