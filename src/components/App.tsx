@@ -2,9 +2,9 @@ import * as React from "react";
 import TreeGraph from "./TreeGraph";
 import LineGraph from "./LineGraph"
 
-// export interface HelloProps { compiler: string; framework: string; };
+type AppProps = { props: any }; /* could also use interface */
 
-const App = (/*props: HelloProps*/) => {
+const App = (props: AppProps) => {
   return (
     // <div>
     //   {/* <Hello /> */}

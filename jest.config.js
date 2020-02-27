@@ -9,5 +9,10 @@ module.exports = {
   ],
   testRegex: '/__tests__/.*\\.(ts|tsx|js)$',
   snapshotSerializers: ['enzyme-to-json/serializer'],
-  setupFilesAfterEnv: ['<rootDir>/__tests__/setupEnzyme.ts'],
+  setupFilesAfterEnv: ['<rootDir>/__tests__/setupEnzyme.tsx'],
+  globals: {
+    'ts-jest': {
+      diagnostics: false,
+    },
+  },
 };

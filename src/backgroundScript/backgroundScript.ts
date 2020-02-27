@@ -8,7 +8,7 @@ interface MessageFromContent {
 }
 
 //Create Variable to store tree structure data from content script; 
-let treeGraph; 
+let treeGraph = treeGraph as object;
 
 // listen for message from contentScript
 chrome.runtime.onMessage.addListener((msg: MessageFromContent) => {
