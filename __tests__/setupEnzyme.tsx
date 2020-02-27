@@ -5,7 +5,7 @@ import * as Enzyme from 'enzyme';
 
 // Enzyme is a wrapper around React test utilities which makes it easier to
 // shallow render and traverse the shallow rendered tree.
-import App from '../src/components/App';
+import { App } from '../src/components/App';
 // import LineGraph from '../src/components/LineGraph';
 // import TreeGraph from '../src/components/TreeGraph';
 

@@ -2,9 +2,7 @@ import * as React from "react";
 import TreeGraph from "./TreeGraph";
 import LineGraph from "./LineGraph"
 
-type AppProps = { props: any }; /* could also use interface */
-
-const App = (props: AppProps) => {
+export const App = () => {
   return (
     // <div>
     //   {/* <Hello /> */}
@@ -33,5 +31,3 @@ const App = (props: AppProps) => {
     </div>
     )
 }
-
-export default App;
