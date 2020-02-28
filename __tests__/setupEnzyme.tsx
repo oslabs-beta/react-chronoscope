@@ -1,7 +1,7 @@
-import * as React from 'react';
-import * as Adapter from "enzyme-adapter-react-16";
-import * as Enzyme from 'enzyme';
-// import toJson from 'enzyme-to-json';
+import React from 'react';
+import Adapter from "enzyme-adapter-react-16";
+import { shallow, configure} from 'enzyme';
+import toJson from 'enzyme-to-json';
 
 // Enzyme is a wrapper around React test utilities which makes it easier to
 // shallow render and traverse the shallow rendered tree.
@@ -11,14 +11,14 @@ import { App } from '../src/components/App';
 
 
 // Newer Enzyme versions require an adapter to a particular version of React
-Enzyme.configure({ adapter: new Adapter() });
+configure({ adapter: new Adapter() });
 
 describe('React-ChronoScope Component Tests', () => {
   describe('Component: App', () => {
     let wrapper;
 
     beforeAll(() => {
-      wrapper = Enzyme.shallow(<App/>);
+      wrapper = shallow(<App/>);
     });
 
     it('Renders a <p> tag with the label in bold', () => {

@@ -1,8 +1,11 @@
 module.exports = {
   transform: {
-    '\\.(ts|tsx)$': 'ts-jest',
+    '\\.(ts|tsx)$': 'babel-jest',
   },
-  testEnvironment: 'node',
+  transformIgnorePatterns: [
+    '<rootDir>node_modules/(?!(jest-runtime)/)',
+  ],
+  testEnvironment: 'jsdom',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   setupFiles: [
     'raf/polyfill',
