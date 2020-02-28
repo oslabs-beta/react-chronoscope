@@ -3,6 +3,7 @@ module.exports = {
     '\\.(ts|tsx)$': 'babel-jest',
   },
   moduleNameMapper: {
+    // required so jest doesn't throw error while importing min.css from timeline
     '\\.(css|less)$': '<rootDir>/src/styles/__mocks__/styleMock.js',
   },
   testPathIgnorePatterns: [
