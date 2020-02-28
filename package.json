@@ -7,9 +7,9 @@
     "clean": "rm -rf dist && cpy manifest.json dist && cpy src/assets/* dist/assets",
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_DEV=development webpack-dev-server",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "coverage": "jest --coverage"
+    "test": "jest --silent",
+    "test:watch": "jest --silent --watch",
+    "coverage": "jest --silent --coverage"
   },
   "author": "ChronoScope",
   "license": "ISC",

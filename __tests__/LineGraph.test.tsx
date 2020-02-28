@@ -11,8 +11,8 @@ describe('React-ChronoScope Component Tests', () => {
       wrapper = shallow(<LineGraph/>);
     });
 
-    it('Renders a <div> tag', () => {
-      expect(wrapper.type()).toEqual('div');
-    });
+    // it('Renders a <div> tag', () => {
+    //   expect(wrapper.type()).toEqual('div');
+    // });
   });
 });
