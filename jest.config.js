@@ -2,8 +2,11 @@ module.exports = {
   transform: {
     '\\.(ts|tsx)$': 'babel-jest',
   },
-  transformIgnorePatterns: [
-    '<rootDir>node_modules/(?!(jest-runtime)/)',
+  moduleNameMapper: {
+    '\\.(css|less)$': '<rootDir>/src/styles/__mocks__/styleMock.js',
+  },
+  testPathIgnorePatterns: [
+    '<rootDir>/(build|docs|node_modules)/',
   ],
   testEnvironment: 'jsdom',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],

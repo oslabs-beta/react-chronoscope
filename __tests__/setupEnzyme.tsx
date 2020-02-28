@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import Adapter from "enzyme-adapter-react-16";
 import { shallow, configure} from 'enzyme';
 import toJson from 'enzyme-to-json';
@@ -14,6 +16,7 @@ import { App } from '../src/components/App';
 configure({ adapter: new Adapter() });
 
 describe('React-ChronoScope Component Tests', () => {
+
   describe('Component: App', () => {
     let wrapper;
 
@@ -21,10 +24,13 @@ describe('React-ChronoScope Component Tests', () => {
       wrapper = shallow(<App/>);
     });
 
-    it('Renders a <p> tag with the label in bold', () => {
-      expect(wrapper.type()).toEqual('p');
-      expect(wrapper.text()).toEqual('Mega: Markets');
-      expect(wrapper.find('strong').text()).toMatch('Mega');
+    // it('renders without crashing', () => {
+    //       const div = document.createElement('div');
+    //       ReactDOM.render(<App />, div);
+    //   });
+
+    it('Renders a <div> tag', () => {
+      expect(wrapper.type()).toEqual('div');
     });
   });
 });
