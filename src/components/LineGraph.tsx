@@ -51,7 +51,7 @@ interface State {
 class LineGraph extends React.Component <{}, State>{
 
   state: State = {
-    data : items, 
+    data : items,
     render : false
   };
 
@@ -60,15 +60,15 @@ class LineGraph extends React.Component <{}, State>{
     const port = chrome.runtime.connect();
     // listen for a message from the background script
     port.onMessage.addListener(message => {
-      setTimeout(() => { 
+      setTimeout(() => {
         getData(message.payload.payload.children[0]);
-        this.setState({ 
+        this.setState({
           data: items,
           render: true
         });
       }, 200)
        // abort connection
-       port.disconnect();
+      port.disconnect();
     })
   }
 
@@ -98,7 +98,7 @@ class LineGraph extends React.Component <{}, State>{
     render() {
       return (
         <div id='lineGraph' style={{}}>
-          {this.state.render && 
+          {this.state.render &&
             <Timeline
               options={options}
               items={this.state.data}
