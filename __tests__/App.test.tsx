@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, renderer } from 'enzyme';
 
 import { App } from '../src/components/App';
 
@@ -9,11 +9,6 @@ describe('React-ChronoScope Component Tests', () => {
 
     beforeAll(() => {
       wrapper = shallow(<App/>);
-    });
-
-    it('should render correctly in "debug" mode', () => {
-      const component = shallow(<App debug />);
-      expect(component).toMatchSnapshot();
     });
 
     it('should render correctly with no props', () => {
