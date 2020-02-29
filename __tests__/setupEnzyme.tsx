@@ -7,3 +7,4 @@ import { configure} from 'enzyme';
 // Newer Enzyme versions require an adapter to a particular version of React
 configure({ adapter: new Adapter() });
 
+test.skip('skip', () => {});

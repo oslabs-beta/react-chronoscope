@@ -1,5 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, render } from 'enzyme';
+
+// needed to mock chrome dev tools api
+import chrome from "sinon-chrome";
 
 import TreeGraph from '../src/components/TreeGraph';
 
@@ -8,11 +11,20 @@ describe('React-ChronoScope Component Tests', () => {
     let wrapper;
 
     beforeAll(() => {
-      wrapper = shallow(<TreeGraph/>);
+      global.chrome = chrome;
+      wrapper = render(<TreeGraph/>);
     });
 
-    it('should render correctly with no props', () => {
-      expect(wrapper).toMatchSnapshot();
-    });
+    // it('should render correctly with no props', () => {
+    //   expect(wrapper).toMatchSnapshot();
+    // });
+
+    // it('Renders a <div> tag', () => {
+    //   expect(wrapper.type()).toEqual('div');
+    // });
+
+    afterAll(() => {
+      chrome.flush()
+    })
   });
 });
