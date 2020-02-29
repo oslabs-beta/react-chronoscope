@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import LineGraph from '../src/components/LineGraph';
 
@@ -8,11 +8,12 @@ describe('React-ChronoScope Component Tests', () => {
     let wrapper;
 
     beforeAll(() => {
-      wrapper = shallow(<LineGraph/>);
+      wrapper = mount(<LineGraph/>);
     });
 
-    // it('Renders a <div> tag', () => {
-    //   expect(wrapper.type()).toEqual('div');
-    // });
+    it('should render correctly with no props', () => {
+      expect(wrapper).toMatchSnapshot();
+      // wrapper.unmount();
+    });
   });
 });

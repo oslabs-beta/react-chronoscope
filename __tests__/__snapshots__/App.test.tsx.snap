@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`React-ChronoScope Component Tests Component: App MyComponent should render correctly in "debug" mode 1`] = `
+<div>
+  <h1
+    style={
+      Object {
+        "fontSize": "28px",
+        "textAlign": "center",
+      }
+    }
+  >
+    React ChronoScope
+  </h1>
+  <hr
+    style={
+      Object {
+        "border": "2px solid black",
+      }
+    }
+  />
+  <h2>
+    Tree Diagram
+  </h2>
+  <div
+    id="treeGraphDiv"
+    style={
+      Object {
+        "backgroundColor": "whitesmoke",
+      }
+    }
+  >
+    <TreeGraph />
+  </div>
+  <hr
+    style={
+      Object {
+        "border": "2px solid black",
+      }
+    }
+  />
+  <div
+    id="lineGraphDiv"
+  >
+    <h2>
+      TimeLine
+    </h2>
+    <LineGraph />
+  </div>
+</div>
+`;
+
+exports[`React-ChronoScope Component Tests Component: App should render correctly in "debug" mode 1`] = `
+<div>
+  <h1
+    style={
+      Object {
+        "fontSize": "28px",
+        "textAlign": "center",
+      }
+    }
+  >
+    React ChronoScope
+  </h1>
+  <hr
+    style={
+      Object {
+        "border": "2px solid black",
+      }
+    }
+  />
+  <h2>
+    Tree Diagram
+  </h2>
+  <div
+    id="treeGraphDiv"
+    style={
+      Object {
+        "backgroundColor": "whitesmoke",
+      }
+    }
+  >
+    <TreeGraph />
+  </div>
+  <hr
+    style={
+      Object {
+        "border": "2px solid black",
+      }
+    }
+  />
+  <div
+    id="lineGraphDiv"
+  >
+    <h2>
+      TimeLine
+    </h2>
+    <LineGraph />
+  </div>
+</div>
+`;
+
+exports[`React-ChronoScope Component Tests Component: App should render correctly with no props 1`] = `
+<div>
+  <h1
+    style={
+      Object {
+        "fontSize": "28px",
+        "textAlign": "center",
+      }
+    }
+  >
+    React ChronoScope
+  </h1>
+  <hr
+    style={
+      Object {
+        "border": "2px solid black",
+      }
+    }
+  />
+  <h2>
+    Tree Diagram
+  </h2>
+  <div
+    id="treeGraphDiv"
+    style={
+      Object {
+        "backgroundColor": "whitesmoke",
+      }
+    }
+  >
+    <TreeGraph />
+  </div>
+  <hr
+    style={
+      Object {
+        "border": "2px solid black",
+      }
+    }
+  />
+  <div
+    id="lineGraphDiv"
+  >
+    <h2>
+      TimeLine
+    </h2>
+    <LineGraph />
+  </div>
+</div>
+`;

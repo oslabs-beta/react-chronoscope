@@ -11,6 +11,15 @@ describe('React-ChronoScope Component Tests', () => {
       wrapper = shallow(<App/>);
     });
 
+    it('should render correctly in "debug" mode', () => {
+      const component = shallow(<App debug />);
+      expect(component).toMatchSnapshot();
+    });
+
+    it('should render correctly with no props', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
     it('Renders a <div> tag', () => {
       expect(wrapper.type()).toEqual('div');
     });

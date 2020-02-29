@@ -18,7 +18,7 @@ module.exports = {
   snapshotSerializers: ['enzyme-to-json/serializer'],
   setupFilesAfterEnv: ['<rootDir>/__tests__/setupEnzyme.tsx'],
   globals: {
-    chrome: {},
+    // chrome: {},
     'ts-jest': {
       diagnostics: false,
     },
