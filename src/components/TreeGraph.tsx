@@ -30,7 +30,6 @@ const TreeGraph: React.FC = () => {
   useEffect(() => {
     // open connection with background script
     if (!port) port = chrome.runtime.connect();
-    port = chrome.runtime.connect();
     // listen for a message from the background script
     port.onMessage.addListener(message => {
       // save the new tree

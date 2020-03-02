@@ -11,10 +11,12 @@ let currentPort;
 chrome.runtime.onConnect.addListener(port => {
   //Once connected. Background Script will send message to Chrome Dev Tool.
   currentPort = port;
-  port.postMessage({
-    action: 'BackgroundToChromeDevTool',
-    payload: treeGraph, 
-  })
+  // if (!currentPort) {
+    port.postMessage({
+      // action: 'BackgroundToChromeDevTool',
+      payload: treeGraph, 
+    })
+  // }
 });
 
 // listen for message from contentScript
