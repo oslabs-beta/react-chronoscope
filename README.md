@@ -1,5 +1,7 @@
 
-![test image size](/src/assets/ChronoScope.png){height="50%" width="50%"}
+<!-- ![test image size](/src/assets/ChronoScope.png){height="50%" width="50%"} -->
+![test image size](/src/assets/ChronoScope.png){:height="50%" width="50%"}
+
 ![test image size](/src/assets/ChronoScopeTitle.png)
 
 
