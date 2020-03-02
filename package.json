@@ -9,7 +9,9 @@
     "dev": "NODE_DEV=development webpack-dev-server",
     "test": "jest --silent",
     "test:watch": "jest --silent --watch",
-    "coverage": "jest --silent --coverage"
+    "coverage": "jest --silent --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "author": "ChronoScope",
   "license": "ISC",
