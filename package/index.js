@@ -19,9 +19,9 @@ class Node {
             shapeProps: {
                 rx: 10, 
                 ry: 10,
-                fill: 'green'
-            }
-        }
+                fill: 'green',
+            },
+        };
     }
 
     initializeProps(fiber) {
@@ -30,7 +30,7 @@ class Node {
             if (typeof fiber.memoizedProps.children[0] === 'object') {
                 fiber.memoizedProps.children.forEach(object => {
                     props += JSON.stringify(object.props);
-                })
+                });
             }
             else props = JSON.stringify(fiber.memoizedProps.children); 
         }
@@ -181,7 +181,7 @@ function treeCreator(hostRoot) {
                 } 
             }
         }
-    }
+    };
 
     compareStateAndProps(treeGraph, prevTreeGraph, null);
     prevTreeGraph = tempTreeGraph;
@@ -192,7 +192,7 @@ function treeCreator(hostRoot) {
 
 module.exports = function(container) {
     const fiberRoot = container._reactRootContainer._internalRoot;
-    let hostRoot = fiberRoot.current;
+    const hostRoot = fiberRoot.current;
 
     // TODO:
     // send only on click and keydown +
