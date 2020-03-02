@@ -1,5 +1,6 @@
 <p align="center">
-<img src="/src/assets/ChronoScope.png" width="25%" height="30%"><br/>
+<img src="/src/assets/ChronoScope.png" width="25%" height="30%">
+<br/>
 <img src="/src/assets/ChronoScopeTitle.png">
 </p>
 
