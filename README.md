@@ -1,5 +1,5 @@
 
-![picture](assets/ChronoScope/png)
+![picture](/src/assets/ChronoScope.png)
 ![picture](assets/ChronoScopeTitle/png)
 
 
