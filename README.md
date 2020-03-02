@@ -1,7 +1,8 @@
+<p align="center">
+<img src="/src/assets/ChronoScope.png" width="30%" height="30%">
+<p>
 
-<img src="/src/assets/ChronoScope.png" align="center" width="50%" height="50%">
-
-<img src="/src/assets/ChronoScopeTitle.png" align="center">
+<img src="/src/assets/ChronoScopeTitle.png">
 
 
 
