@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import Tree from 'react-d3-tree';
 
 interface treeData{
@@ -16,10 +16,10 @@ treeGraphData = [
     children: [
       {
         name: '',
-        children: []
-      }
-    ]
-  }
+        children: [],
+      },
+    ],
+  },
 ];
 
 interface State {
@@ -27,24 +27,23 @@ interface State {
 }
 
 class TreeGraph extends React.Component <{}, State> {
-
   state: State = {
-    data : treeGraphData
+    data: treeGraphData,
   };
 
   componentDidMount() {
     // open connection with background script
     const port = chrome.runtime.connect();
     // listen for a message from the background script
-    port.onMessage.addListener(message => {
-        // save the new tree
+    port.onMessage.addListener((message) => {
+      // save the new tree
       treeGraphData = [message.payload.payload];
       this.setState({
-        data: treeGraphData
+        data: treeGraphData,
       });
       // abort connection
       port.disconnect();
-    })
+    });
   }
 
   componentDidUpdate() {
@@ -52,24 +51,24 @@ class TreeGraph extends React.Component <{}, State> {
       // open connection with background script
       const port = chrome.runtime.connect();
       // listen for a message from the background script
-      port.onMessage.addListener(message => {
+      port.onMessage.addListener((message) => {
         // save the new tree
         tempData = [message.payload.payload];
         // reassign the treeGraph if tempData is different from previous treeGraph
         if (JSON.stringify(tempData) !== JSON.stringify(treeGraphData)) {
           treeGraphData = tempData;
           this.setState({
-            data: treeGraphData
+            data: treeGraphData,
           });
         }
-      })
+      });
     }, 200);
   }
 
   render() {
     return (
-      <div id='treeGraph' style={{'height': '500px'}}>
-        <Tree data={this.state.data} orientation="vertical" translate={{ x: 300, y: 20}} zoom={0.45}/>
+      <div id="treeGraph" style={{ height: '500px' }}>
+        <Tree data={this.state.data} orientation="vertical" translate={{ x: 300, y: 20 }} zoom={0.45} />
       </div>
     );
   }
