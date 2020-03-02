@@ -4,7 +4,7 @@
 <img src="/src/assets/ChronoScopeTitle.png">
 </p> -->
 
-![Image]("/src/assets/ChronoScope.png")
+![Alt text](/src/assets/ChronoScope.png)
 
 # Team
 
