@@ -4,7 +4,7 @@
 <img src="/src/assets/ChronoScopeTitle.png">
 </p>
 
-<h1 align="center">Developers' tool to monitor React performance and pinpoint areas that require further optimization</h1>
+<h3 align="center">Developers' tool to monitor React performance and pinpoint areas that require further optimization</h3>
 
 # Team
 
