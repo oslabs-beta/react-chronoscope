@@ -1,4 +1,7 @@
-# react-chronoscope
+
+![alt text](assets/ChronoScope/png)
+![alt text](assets/ChronoScopeTitle/png)
+
 
 
 # Team
