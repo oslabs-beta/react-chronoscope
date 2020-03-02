@@ -4,7 +4,7 @@
 <img src="/src/assets/ChronoScopeTitle.png">
 </p> -->
 
-![Alt text](/src/assets/ChronoScope.png | width=100)
+![Alt text](/src/assets/ChronoScope.png){:height="36px" width="36px"}
 
 # Team
 
