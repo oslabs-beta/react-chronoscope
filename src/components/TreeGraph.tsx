@@ -27,23 +27,35 @@ interface State {
   data: treeData[];
 }
 
-let port;
+// let port;
 
 const TreeGraph: React.FC = () => {
   const [tree, setTree] = useState<treeData[]>(treeGraphData);
 
-  useEffect(() => {
-    console.log('use effect');
-    // open connection with background script
-    const port = chrome.runtime.connect();
-    // listen for a message from the background script
-    port.onMessage.addListener(message => {
+  const port = chrome.runtime.connect();
+  // listen for a message from the background script
+  port.onMessage.addListener(message => {
+    console.log('from port on message');
+    if (JSON.stringify([message.payload.payload]) !== JSON.stringify(treeGraphData)) {
       // save the new tree
       treeGraphData = [message.payload.payload];
       setTree(treeGraphData);
-      // abort connection
-      port.disconnect();
-    })
+    }
+  })
+
+  useEffect(() => {
+    console.log('use effect');
+    // open connection with background script
+    // if (!port) port = chrome.runtime.connect();
+    // const port = chrome.runtime.connect();
+    // // listen for a message from the background script
+    // port.onMessage.addListener(message => {
+    //   // save the new tree
+    //   if (JSON.stringify([message.payload.payload]) !== JSON.stringify(treeGraphData)) {
+    //     treeGraphData = [message.payload.payload];
+    //     setTree(treeGraphData);
+    //   }
+    // })
   }); 
 
   return (
