@@ -2,26 +2,17 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import Tree from 'react-d3-tree';
 
-interface treeData{
+interface treeData {
   name: string,
   children: treeData[];
 }
 
-let treeGraphData: treeData[];
+let treeGraphData: treeData[] = [{
+  name: '',
+  children: [],
+}];;
 
-// initial tree data
-treeGraphData = [
-  {
-    name: 'App',
-    children: [
-      {
-        name: '',
-        children: []
-      }
-    ]
-  }
-];
-
+// initialize port that will be upon when component Mounts
 let port;
 
 const TreeGraph: React.FC = () => {
@@ -29,11 +20,12 @@ const TreeGraph: React.FC = () => {
 
   useEffect(() => {
     // open connection with background script
+    // make sure to open only one port
     if (!port) port = chrome.runtime.connect();
     // listen for a message from the background script
     port.onMessage.addListener(message => {
-      // save the new tree
       if (JSON.stringify([message.payload.payload]) !== JSON.stringify(treeGraphData)) {
+        // save new tree
         treeGraphData = [message.payload.payload];
         setTree(treeGraphData);
       }
