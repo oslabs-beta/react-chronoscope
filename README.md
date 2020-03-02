@@ -7,17 +7,11 @@
 
 # Team
 
-<!-- Jason Huang (https://github.com/jhmoon999)<br/>
-Jimmy Mei (https://github.com/Jimmei27)<br/>
-Matt Peters (https://github.com/mgpeters)<br/>
-Sergiy Alariki (https://github.com/Serrzhik)<br/>
-Vinh Chau (https://github.com/Vchau511) -->
-
 - **Jason Huang** - [https://github.com/jhmoon999]
-- **Jimmy Mei** - [https://github.com/Jimmei27](https://github.com/Jimmei27)
-- **Matt Peters** - [https://github.com/mgpeters](https://github.com/mgpeters)
-- **Sergiy Alariki** - [https://github.com/Serrzhik](https://github.com/Serrzhik)
-- **Vinh Chau** - [https://github.com/Vchau511](https://github.com/Vchau511)
+- **Jimmy Mei** - [https://github.com/Jimmei27]
+- **Matt Peters** - [https://github.com/mgpeters]
+- **Sergiy Alariki** - [https://github.com/Serrzhik]
+- **Vinh Chau** - [https://github.com/Vchau511]
 
 ## License
 
