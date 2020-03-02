@@ -1,43 +1,45 @@
 let wasMounted = false;
 
 class Node {
-  constructor(name, parent, children, fiber) {
-    this.name = name;
-    this.parent = parent;
-    this.children = children;
-    this.attributes = {
-      state: JSON.stringify(fiber.memoizedState),
-      props: JSONStringify(fiber.memoizedProps),
-      stateOrPropsChanged: 'true',
-      effectTag: fiber.effectTag,
-      type: typeof fiber.type,
-      // renderStart: fiber.actualStartTime,
-      // renderTotal: fiber.actualDuration,
-    };
-    this.nodeSvgShape = {
-      shape: 'ellipse',
-      shapeProps: {
-        rx: 10,
-        ry: 10,
-        fill: 'green',
-      },
-    };
-  }
-
-  initializeProps(fiber) {
-    let props = '';
-    if (fiber.memoizedProps.children) {
-      if (typeof fiber.memoizedProps.children[0] === 'object') {
-        fiber.memoizedProps.children.forEach((object) => {
-          props += JSON.stringify(object.props);
-        });
-      } else props = JSON.stringify(fiber.memoizedProps.children);
-    } else {
-      props = JSON.stringify(fiber.memoizedProps);
+    constructor(name, parent, children, fiber) {
+        this.name = name;
+        this.parent = parent;
+        this.children = children;
+        this.attributes = {
+            state: JSON.stringify(fiber.memoizedState),
+            props: JSONStringify(fiber.memoizedProps),
+            stateOrPropsChanged: 'true',
+            effectTag: fiber.effectTag,
+            type: typeof fiber.type,
+            // renderStart: fiber.actualStartTime,
+            // renderTotal: fiber.actualDuration,
+        };
+        this.nodeSvgShape = {
+            shape: 'ellipse',
+            shapeProps: {
+                rx: 10,
+                ry: 10,
+                fill: 'green',
+            },
+        };
     }
 
-    return props;
-  }
+    initializeProps(fiber) {
+        let props = '';
+        if (fiber.memoizedProps.children) {
+            if (typeof fiber.memoizedProps.children[0] === 'object') {
+                fiber.memoizedProps.children.forEach(object => {
+                    props += JSON.stringify(object.props);
+                });
+            }
+            else props = JSON.stringify(fiber.memoizedProps.children); 
+        }
+        else {
+            props = JSON.stringify(fiber.memoizedProps);
+        }
+
+        return props;
+    }
 }
 
 function JSONStringify(object) {
@@ -174,9 +176,7 @@ function treeCreator(hostRoot) {
         for (let i = 0; i < node.children.length; i += 1) {
           compareStateAndProps(node.children[i]);
         }
-      }
-    }
-  };
+    };
 
   compareStateAndProps(treeGraph, prevTreeGraph, null);
   prevTreeGraph = tempTreeGraph;
@@ -185,9 +185,9 @@ function treeCreator(hostRoot) {
   window.postMessage({ action: 'npmToContent', payload: treeGraph });
 }
 
-module.exports = function (container) {
-  const fiberRoot = container._reactRootContainer._internalRoot;
-  const hostRoot = fiberRoot.current;
+module.exports = function(container) {
+    const fiberRoot = container._reactRootContainer._internalRoot;
+    const hostRoot = fiberRoot.current;
 
   // TODO:
   // send only on click and keydown +
