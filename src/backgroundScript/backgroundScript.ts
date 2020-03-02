@@ -22,7 +22,7 @@ chrome.runtime.onMessage.addListener((msg: IMessageData) => {
   // once the message is accepted from content script, send it to dev tool
   if (currentPort) {
     currentPort.postMessage({
-      payload: treeGraph,
+      payload: treeGraph
     })
   }
 });
