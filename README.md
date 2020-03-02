@@ -1,6 +1,6 @@
 
 ![picture](/src/assets/ChronoScope.png)
-![picture](assets/ChronoScopeTitle/png)
+![picture](/src/assets/ChronoScopeTitle.png)
 
 
 
