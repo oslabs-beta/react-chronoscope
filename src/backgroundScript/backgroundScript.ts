@@ -1,31 +1,27 @@
-interface MessageFromContent {
-  action: string;
-  payload: string;
-}
+import { IMessageData } from '../interfaces';
 
-// Create Variable to store tree structure data from content script; 
+// define a variable to store tree data structure from content script; 
 let treeGraph; 
+// connected port will be saved here
 let currentPort;
 
 // listen for connection from the chrome dev tool;
 chrome.runtime.onConnect.addListener(port => {
-  //Once connected. Background Script will send message to Chrome Dev Tool.
+  // save the port
   currentPort = port;
-  // if (!currentPort) {
+  // send message to Chrome Dev Tool on initial connect
     port.postMessage({
-      // action: 'BackgroundToChromeDevTool',
       payload: treeGraph, 
     })
-  // }
 });
 
 // listen for message from contentScript
-chrome.runtime.onMessage.addListener((msg: MessageFromContent) => {
-  console.log('Parsed Data from ContentScript: ', JSON.parse(msg.payload));
-  treeGraph = JSON.parse(msg.payload);
+chrome.runtime.onMessage.addListener((msg: IMessageData) => {
+  // reassign the treeGraph
+  treeGraph = msg.payload;
+  // once the message is accepted from content script, send it to dev tool
   if (currentPort) {
     currentPort.postMessage({
-      // action: 'BackgroundToChromeDevTool',
       payload: treeGraph, 
     })
   }

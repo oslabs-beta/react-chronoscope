@@ -1,12 +1,13 @@
 {
     "compilerOptions": {
-        "outDir": "./build/",
+        // "outDir": "./build/",
         "sourceMap": true,
         "noImplicitAny": false,
         "module": "commonjs",
         "target": "es6",
         "jsx": "react",
-        "types": ["@types/chrome", "@types/react", "@types/react-dom"],
+        "types": ["@types/chrome", "@types/react", "@types/react-dom", "@types/node", "@types/jest", "@types/enzyme"],
+        "esModuleInterop": true,
     }
 }
 

@@ -1,22 +1,18 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import Tree from 'react-d3-tree';
+import { ITree } from '../interfaces';
 
-interface treeData {
-  name: string,
-  children: treeData[];
-}
-
-let treeGraphData: treeData[] = [{
+let treeGraphData: ITree[] = [{
   name: '',
   children: [],
-}];;
+}];
 
 // initialize port that will be upon when component Mounts
 let port;
 
 const TreeGraph: React.FC = () => {
-  const [tree, setTree] = useState<treeData[]>(treeGraphData);
+  const [tree, setTree] = useState<ITree[]>(treeGraphData);
 
   useEffect(() => {
     // open connection with background script
@@ -27,6 +23,7 @@ const TreeGraph: React.FC = () => {
       if (JSON.stringify([message.payload.payload]) !== JSON.stringify(treeGraphData)) {
         // save new tree
         treeGraphData = [message.payload.payload];
+        console.log(treeGraphData);
         setTree(treeGraphData);
       }
     })
