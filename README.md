@@ -1,6 +1,6 @@
 
-![picture size](/src/assets/ChronoScope.png){height="50%" width="50%"}
-![picture size](/src/assets/ChronoScopeTitle.png)
+![test image size](/src/assets/ChronoScope.png){height="50%" width="50%"}
+![test image size](/src/assets/ChronoScopeTitle.png)
 
 
 
