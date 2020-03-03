@@ -37,8 +37,11 @@ ReactDOM.render(<App />, rootContainer);
 reactChronoscope(rootContainer);
 ```
 
-### How to Use
+### How To Use
 After installing both the Chrome Extension and the npm package, run the react application in the browser. Then open Chrome Developer Tools (Inspect) on the React Application and click on ``` React ChronoScope ``` at the top of the Developer Tools panel.
+
+### Features
+
 </p>
 
 ## Team
