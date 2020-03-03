@@ -7,7 +7,7 @@
  # 
 <h3 align="center">                     Developers' tool to monitor React performance and pinpoint areas that require further optimization</h3>
 
-# Team
+## Team
 
 - **Jason Huang** - [https://github.com/jhmoon999]
 - **Jimmy Mei** - [https://github.com/Jimmei27]
@@ -15,6 +15,6 @@
 - **Sergiy Alariki** - [https://github.com/Serrzhik]
 - **Vinh Chau** - [https://github.com/Vchau511]
 
-# License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
