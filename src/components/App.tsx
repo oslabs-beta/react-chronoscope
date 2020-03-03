@@ -1,6 +1,6 @@
-import * as React from "react";
-import TreeGraph from "./TreeGraph";
-import LineGraph from "./LineGraph"
+import * as React from 'react';
+import TreeGraph from './TreeGraph';
+import LineGraph from './LineGraph';
 
 export const App: React.SFC = () => {
   return (

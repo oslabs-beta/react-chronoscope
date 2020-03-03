@@ -27,7 +27,7 @@ const TreeGraph: React.FC = () => {
         setTree(treeGraphData);
       }
     })
-  }); 
+  });
 
   return (
     <div id='treeGraph' style={{'height': '500px'}}>
