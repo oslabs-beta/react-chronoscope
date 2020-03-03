@@ -19,9 +19,9 @@
       "ids": ["*"]
     },
     "icons": {
-      "16": "./assets/ChronoScope16.png",
-      "48": "./assets/ChronoScope48.png",
-      "128": "./assets/ChronoScope128.png"
+      "16": "./assets/ChronoScope.png",
+      "48": "./assets/ChronoScope.png",
+      "128": "./assets/ChronoScope.png"
     },
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
