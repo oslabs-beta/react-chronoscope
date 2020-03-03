@@ -8,7 +8,7 @@
 <h3 align="center"> Developers' tool to monitor React performance and pinpoint areas </br> that require further optimization</h3>
 
 #   
-## What is React ChronoScope?
+### What is React ChronoScope?
 # 
 <p>
  React ChronoScope is a performance monitoring tool for React developers. It visualizes React application's components displaying components that require further optimization.
