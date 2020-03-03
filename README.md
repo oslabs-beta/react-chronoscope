@@ -12,9 +12,9 @@
 ### What Is React ChronoScope?
 
 <p>
- React ChronoScope is a performance monitoring tool for React developers. It visualizes React application's components displaying components that require further optimization.
+React ChronoScope is a performance monitoring tool for React developers. It visualizes React application's components displaying components that require further optimization.
 
- React ChronoScope parses through the React application to construct an interactive tree diagram of the component hierarchy.  
+React ChronoScope parses through the React application to construct an interactive tree diagram of the component hierarchy.  
 </p>
 
 ### How To Install 
