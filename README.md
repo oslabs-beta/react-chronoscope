@@ -29,12 +29,13 @@ npm i react-chronoscope
 3. Import the npm library into root container file of React Application and invoke the library with the root container. 
 
 ```
-import reactChronoScope from 'react-chronoscope';
-
-const rootContainer = document.getElementById('root');
-ReactDOM.render(<App />, rootContainer);
-
-reactChronoscope(rootContainer);
+import chronoscope from 'react-chronoscope';
+const container = document.querySelector('#root');
+render(
+    <App />,
+    container,
+    () => chronoscope(container)
+);
 ```
 
 ### How To Use
