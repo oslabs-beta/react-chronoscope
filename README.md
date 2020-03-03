@@ -26,8 +26,7 @@ React ChronoScope parses through the React application to construct an interacti
 npm i react-chronoscope
 ```
 
-3. Import the npm library into root container of React Application. 
-
+3. Import the npm library into root container file of React Application and invoke the library with the root container. 
 
 ```
 import reactChronoScope from 'react-chronoscope';
@@ -37,6 +36,11 @@ ReactDOM.render(<App />, rootContainer);
 
 reactChronoscope(rootContainer);
 ```
+
+### How to Use
+After installing both the Chrome Extension and the npm package, run the react application in the browser.
+
+
 </p>
 
 ## Team
