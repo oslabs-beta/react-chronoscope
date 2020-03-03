@@ -19,7 +19,7 @@ class Node {
             shapeProps: {
                 rx: 10, 
                 ry: 10,
-                fill: 'green',
+                fill: 'lightgreen',
             },
         };
     }
@@ -44,32 +44,29 @@ class Node {
 
 function JSONStringify(object) {
     let cache = [];        
-    const str = JSON.stringify(object,
-        // custom replacer fxn - gets around "TypeError: Converting circular structure to JSON" 
+    const string = JSON.stringify(object,
+        // custom replacer - gets around "TypeError: Converting circular structure to JSON" 
         function(key, value) {
             if (typeof value === 'object' && value !== null) {
                 if (cache.indexOf(value) !== -1) {
                     // Circular reference found, discard key
                     return;
                 }
-                // Store value in our collection
+                // Store value in collection
                 cache.push(value);
             }
             return value;
         }, 4);
-    cache = null; // enable garbage collection
-    return str;
+    cache = null; //ngarbage collection
+    return string;
 }
 
 let prevTreeGraph = null;
 
 function treeCreator(hostRoot) {
-    // console.log('Host Root: ', hostRoot);
-    // define the tree
-    // helper function - that accepts the node - App Fiber
+    // helper function - that accepts the node - Host Root
     function treeGraphFromHostRootCreator(fiber) {
         // create a treeGraph
-        // console.log(fiber.type.name);
         const treeGraph = new Node(fiber.type.name, null, [], fiber); // Represent the top most Element (like App);
         const helper = (fiber, treeGraph) => {
             // check if fiber.child !== null - traverse
@@ -78,7 +75,6 @@ function treeCreator(hostRoot) {
                 // the parent will the tree graph we are currently working with (do the type check for elements that are functions or html elements)
                 let newGraphNode = treeGraph;
                 if (typeof fiber.child.type !== 'object' && (fiber.child.child ? typeof fiber.child.child.type !== 'object' : true)) {
-                    // console.log(fiber.child, typeof fiber.child.type);
                     newGraphNode = new Node(fiber.child.key || (fiber.child.type ? fiber.child.type.name : fiber.child.type) || fiber.child.type, treeGraph, [], fiber.child);
                     treeGraph.children.push(newGraphNode);
                 }
@@ -109,9 +105,7 @@ function treeCreator(hostRoot) {
         // assign the returned result to tree
         treeGraph = treeGraphFromHostRootCreator(hostRoot.child);
     }
-    // console.log('treeGraph: ', treeGraph);
-    window.treeGraph = treeGraph;
-    //window.postMessage({action: 'npmToContent', payload: treeGraph});
+
     function recursivelyDeleteParent(root) {
         if (root.parent) {
             delete root.parent;
@@ -129,30 +123,26 @@ function treeCreator(hostRoot) {
         // compare state and props properties on attributes properties for both nodes
         // if same - treeGraph.attributes.stateOrPropsChanged - false
         if (node && prevNode) {
-            // console.log(node);
             // check if the node's type is a string
-            // yes? give it a color of the parent - because Composite Component renders(or not) Host Coponent
+            // yes? give it a color of the parent - because Composite Component renders(or not) Host Component
             if (node.attributes.type === 'string') {
                 node.nodeSvgShape.shapeProps = parentShapeProps;
             }
             else if (prevNode.attributes.state === node.attributes.state && prevNode.attributes.props === node.attributes.props) {
                 node.attributes.stateOrPropsChanged = 'false';
-                if ((node.attributes.effectTag === 0 || node.attributes.effectTag === 1) && wasMounted) {
+                if ((node.attributes.effectTag === 0 || node.attributes.effectTag === 4) && wasMounted) {
                     node.nodeSvgShape.shapeProps.fill = 'gray';
                 }
                 else {
                     node.nodeSvgShape.shapeProps.fill = 'red';
-                    node.nodeSvgShape.shapeProps.rx = 20;
-                    node.nodeSvgShape.shapeProps.ry = 20;
+                    node.nodeSvgShape.shapeProps.rx = 12;
+                    node.nodeSvgShape.shapeProps.ry = 12;
                 }
-                // console.log(node.name, 'has changed: ', false);
             }
-            // else console.log(node.name, 'has changed: ', true);
 
-            delete node.attributes.state;
-            delete node.attributes.props;
+            delete node.attributes;
 
-            // recursively invoke the fucntion for each children
+            // recursively invoke the function for each children
             if (node.children.length) {
                 for (let i = 0; i < node.children.length; i += 1) {
                     compareStateAndProps(node.children[i], prevNode.children[i], node.nodeSvgShape.shapeProps);
@@ -160,11 +150,9 @@ function treeCreator(hostRoot) {
             }
         }
         else if (node) {
-            // console.log(node);
-            delete node.attributes.state;
-            delete node.attributes.props;
+            delete node.attributes;
 
-            // recursively invoke the fucntion for each children
+            // recursively invoke the function for each children
             if (node.children.length) {
                 for (let i = 0; i < node.children.length; i += 1) {
                     compareStateAndProps(node.children[i], null, node.nodeSvgShape.shapeProps);
@@ -173,8 +161,7 @@ function treeCreator(hostRoot) {
         }
 
         if (!wasMounted) {
-            delete node.attributes.state;
-            delete node.attributes.props;
+            delete node.attributes;
             if (node.children.length) {
                 for (let i = 0; i < node.children.length; i += 1) {
                     compareStateAndProps(node.children[i]);
@@ -186,7 +173,6 @@ function treeCreator(hostRoot) {
     compareStateAndProps(treeGraph, prevTreeGraph, null);
     prevTreeGraph = tempTreeGraph;
     wasMounted = true;
-    // console.log('Tree graph before posting the message: ', JSON.stringify(treeGraph, null, 2));
     window.postMessage({ action: 'npmToContent', payload: treeGraph });
 }
 
@@ -194,11 +180,6 @@ module.exports = function(container) {
     const fiberRoot = container._reactRootContainer._internalRoot;
     const hostRoot = fiberRoot.current;
 
-    // TODO:
-    // send only on click and keydown +
-    // chrome API +
-    // prototype
-    // check if the hostRoot is new - only then invoke +
     setTimeout(() => treeCreator(hostRoot), 500); // needs to wait for the page load
     window.addEventListener('click', () => {
         // check if the hostRoot is new - only then invoke
@@ -207,10 +188,9 @@ module.exports = function(container) {
             console.log(hostRoot, fiberRoot.current);
             if (hostRoot !== fiberRoot.current) {
                 console.log('Host Root: ', fiberRoot.current);
-                // console.log('App: ', fiberRoot.current.child);
                 treeCreator(fiberRoot.current);
             }
-        }, 500);
+        }, 200);
     });
     window.addEventListener('keyup', () => {
         setTimeout(() => {
@@ -219,17 +199,6 @@ module.exports = function(container) {
             if (hostRoot !== fiberRoot.current) {
                 treeCreator(fiberRoot.current);
             }
-        }, 500);
+        }, 200);
     });
-    // TODO: find where state or props changed
-    if (hostRoot.child) {
-        console.log('Top most component: ', hostRoot.child);
-    }
-    // console.log('Table: ', Table);
-    // console.log('Table.prototype: ', Table.prototype);
-    // console.log('Table.componentDidUpdate: ', Table.componentDidUpdate);
-    // console.log('Component', Component);
-    // console.log('Component.prototype', Component.prototype);
-    // console.log(Table.__proto__ === Component);
-    return container;
 };
