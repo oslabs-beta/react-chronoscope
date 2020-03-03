@@ -1,7 +1,7 @@
 import { IMessageData } from '../interfaces';
 
-// define a variable to store tree data structure from content script; 
-let treeGraph; 
+// define a variable to store tree data structure from content script;
+let treeGraph;
 // connected port will be saved here
 let currentPort;
 
@@ -11,7 +11,7 @@ chrome.runtime.onConnect.addListener(port => {
   currentPort = port;
   // send message to Chrome Dev Tool on initial connect
     port.postMessage({
-      payload: treeGraph, 
+      payload: treeGraph,
     })
 });
 
@@ -22,9 +22,8 @@ chrome.runtime.onMessage.addListener((msg: IMessageData) => {
   // once the message is accepted from content script, send it to dev tool
   if (currentPort) {
     currentPort.postMessage({
-      payload: treeGraph, 
+      payload: treeGraph
     })
   }
 });
-
 

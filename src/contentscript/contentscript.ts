@@ -7,7 +7,7 @@ window.addEventListener('message', (msg: IMessage) => {
     console.log('TreeGraph from npm: ', msg.data);
     // send the message to the chrome - backgroundScript
     chrome.runtime.sendMessage({
-      action: 'ContentToBackground', 
+      action: 'ContentToBackground',
       payload: msg.data,
     });
   }

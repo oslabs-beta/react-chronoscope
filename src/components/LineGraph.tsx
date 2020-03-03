@@ -1,9 +1,9 @@
-import * as React from "react";
-import Timeline from "react-visjs-timeline";
+import * as React from 'react';
+import Timeline from 'react-visjs-timeline';
 
 const options = {
-  width: "100%",
-  height: "250px",
+  width: '100%',
+  height: '250px',
   stack: true,
   showCurrentTime: false,
   showMajorLabels: false,
@@ -12,7 +12,7 @@ const options = {
   end: new Number(320),
   min: new Number(0),
   max: new Number(1000),
-  type: "range",
+  type: 'range',
   selectable: true,
   // horizontalScroll : true,
   verticalScroll: true,
@@ -26,21 +26,21 @@ interface event {
   end: any,
 }
 
-let items = [];
+const items = [];
 let event;
 let tempData;
 
 function getData(Node) {
   event = {};
-  event.start = new Number (Math.floor(Node.attributes.renderStart));
-  event.end = new Number (Math.floor(Node.attributes.renderStart + Node.attributes.renderTotal));
+  event.start = new Number(Math.floor(Node.attributes.renderStart));
+  event.end = new Number(Math.floor(Node.attributes.renderStart + Node.attributes.renderTotal));
   event.content = Node.name;
   event.title = Node.name;
   items.push(event);
   if (Node.children.length !== 0) {
-    Node.children.forEach(child => {
+    Node.children.forEach((child) => {
       getData(child);
-    })
+    });
   }
 }
 interface State {
@@ -48,28 +48,27 @@ interface State {
   render: boolean
 }
 
-class LineGraph extends React.Component <{}, State>{
-
+class LineGraph extends React.Component <{}, State> {
   state: State = {
-    data : items,
-    render : false
+    data: items,
+    render: false,
   };
 
   componentDidMount() {
     // open connection with background script
     const port = chrome.runtime.connect();
     // listen for a message from the background script
-    port.onMessage.addListener(message => {
+    port.onMessage.addListener((message) => {
       setTimeout(() => {
         getData(message.payload.payload.children[0]);
         this.setState({
           data: items,
-          render: true
+          render: true,
         });
-      }, 200)
-       // abort connection
+      }, 200);
+      // abort connection
       port.disconnect();
-    })
+    });
   }
 
   // componentDidUpdate() {
@@ -86,7 +85,7 @@ class LineGraph extends React.Component <{}, State>{
   //         this.setState({
   //           render: false
   //         });
-  //         this.setState({ 
+  //         this.setState({
   //           data: items,
   //           render: true
   //         });
@@ -95,17 +94,19 @@ class LineGraph extends React.Component <{}, State>{
   //   }, 20000);
   // }
 
-    render() {
-      return (
-        <div id='lineGraph' style={{}}>
-          {this.state.render &&
+  render() {
+    return (
+      <div id="lineGraph" style={{}}>
+        {this.state.render
+            && (
             <Timeline
               options={options}
               items={this.state.data}
-            />}
-        </div>
-      );
-    }
+            />
+            )}
+      </div>
+    );
   }
+}
 
 export default LineGraph;
