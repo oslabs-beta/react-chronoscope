@@ -4,6 +4,7 @@
 <img src="/src/assets/ChronoScopeTitle.png">
 </p>
 
+ # 
 <h3 align="center">                     Developers' tool to monitor React performance and pinpoint areas that require further optimization</h3>
 
 # Team
@@ -14,6 +15,6 @@
 - **Sergiy Alariki** - [https://github.com/Serrzhik]
 - **Vinh Chau** - [https://github.com/Vchau511]
 
-## License
+# License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
