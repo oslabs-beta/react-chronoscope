@@ -23,10 +23,6 @@ React ChronoScope parses through the React application to construct an interacti
 1. Download the [extension](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en-US)
 
 2. Install the [npm package](https://www.npmjs.com/package/react-chronoscope) in the react application.
-
-```
-npm i react-chronoscope
-```
 </p>
 
 ## Team
