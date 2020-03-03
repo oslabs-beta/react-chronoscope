@@ -31,7 +31,13 @@ const TreeGraph: React.FC = () => {
 
   return (
     <div id='treeGraph' style={{'height': '500px'}}>
-      <Tree data={tree} orientation="vertical" translate={{ x: 300, y: 20}} zoom={0.45}/>
+      <Tree 
+        data={tree} 
+        orientation="vertical" 
+        translate={{ x: 300, y: 20}} 
+        zoom={0.45} 
+        separation={{ siblings: .6, nonSiblings: .6 }}
+      />
     </div>
   );
 }
