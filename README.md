@@ -5,8 +5,7 @@
 </p>
 
  # 
-<h3 align="center">Developers' tool to monitor React performance and pinpoint areas 
-<span>that require further optimization</span></h3>
+<h3 align="center">                 Developers' tool to monitor React performance and pinpoint areas that require further optimization</h3>
 
 ## Team
 
