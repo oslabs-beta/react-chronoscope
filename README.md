@@ -18,9 +18,25 @@ React ChronoScope parses through the React application to construct an interacti
 
 ### How To Install 
 
-1. Download the [extension](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en-US)
+1. Download the [extension](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en-US) from the Chrome Web Store. 
 
-2. Install the [npm package](https://www.npmjs.com/package/react-chronoscope) in the react application.
+2. Install the [npm package](https://www.npmjs.com/package/react-chronoscope) in the React application.
+
+```
+npm i react-chronoscope
+```
+
+3. Import the npm library into root container of React Application. 
+
+
+```
+import reactChronoScope from 'react-chronoscope';
+
+const rootContainer = document.getElementById('root');
+ReactDOM.render(<App />, rootContainer);
+
+reactChronoscope(rootContainer);
+```
 </p>
 
 ## Team
