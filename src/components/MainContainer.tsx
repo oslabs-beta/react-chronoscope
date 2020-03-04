@@ -45,12 +45,12 @@ interface Event {
 
 function getData(Node, baseTime) {
   event = {};
-  event.start = new Number((Number(Node.attributes.renderStart) - Number(baseTime)).toFixed(2));
-  event.end = new Number((Number(Node.attributes.renderStart) + Number(Node.attributes.renderTotal) - Number(baseTime)).toFixed(2));
-  console.log('render start: ', Number(Node.attributes.renderStart));
-  console.log('rendered total: ', Number(Node.attributes.renderTotal));
+  event.start = new Number((Number(Node.stats.renderStart) - Number(baseTime)).toFixed(2));
+  event.end = new Number((Number(Node.stats.renderStart) + Number(Node.stats.renderTotal) - Number(baseTime)).toFixed(2));
+  console.log('render start: ', Number(Node.stats.renderStart));
+  console.log('rendered total: ', Number(Node.stats.renderTotal));
   console.log('base time: ', Number(baseTime));
-  console.log('final Number Object', new Number(Number(Node.attributes.renderStart) + Number(Node.attributes.renderTotal) - Number(baseTime)).toFixed(2));
+  console.log('final Number Object', new Number(Number(Node.stats.renderStart) + Number(Node.stats.renderTotal) - Number(baseTime)).toFixed(2));
   event.content = Node.name;
   event.title = Node.name;
   items.push(event);
@@ -73,8 +73,16 @@ export const MainContainer: React.FC = () => {
       if (JSON.stringify([message.payload.payload]) !== JSON.stringify(treeGraphData)) {
         // save new tree
         treeGraphData = [message.payload.payload];
+        getData(treeGraphData[0], treeGraphData[0].stats.renderStart);
+        // recursively deleting attributes - to avoid displaying them
+        // const deleteAttributes = (node) => {
+        //   delete node.attributes;
+        //   if (node.children.length) {
+        //     node.children.forEach((child) => deleteAttributes(child));
+        //   }
+        // };
+        // deleteAttributes(treeGraphData[0]);
         setTree(treeGraphData);
-        getData(treeGraphData[0], treeGraphData[0].attributes.renderStart);
         timeLineArray.shift();
         timeLineArray.push(items);
         items = [];
@@ -94,7 +102,7 @@ export const MainContainer: React.FC = () => {
       <div id="lineGraphDiv">
         <h2>TimeLine</h2>
         {
-            timeLineArray.map((el, i, arr) => <LineGraph data={el} options={options} />)
+            timeLineArray.map((items) => <LineGraph data={items} options={options} />)
         }
       </div>
     </>

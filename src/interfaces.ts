@@ -10,7 +10,7 @@ export interface IMessageData {
 export interface ITree {
     name?: string;
     children?: ITree[];
-    attributes?: any;
+    stats?: any;
     nodeSvgShape?: IShape;
 }
 
