@@ -12,30 +12,24 @@ let treeGraphData: ITree[] = [{
 // initialize port that will be upon when component Mounts
 let port;
 
-let isMounted = false;
 const timeLineArray = [];
 
-let items = [{
-  title: '',
-  content: '',
-  start: 100,
-  end: 200,
-}];
+let items = [];
 
 const options = {
   width: '100%',
-  height: '250px',
+  height: '500px',
   stack: true,
   showCurrentTime: false,
   showMajorLabels: false,
-  zoomable: true,
-  start: new Number(305),
-  end: new Number(320),
-  min: new Number(100),
-  max: new Number(800),
+  zoomable: false,
+  start: new Number(0),
+  end: new Number(10),
+  min: new Number(0),
+  max: new Number(40),
   type: 'range',
   selectable: true,
-  // horizontalScroll : true,
+  horizontalScroll: false,
   verticalScroll: true,
   // editable: true,
 };
@@ -49,16 +43,20 @@ interface Event {
     end: any,
 }
 
-function getData(Node) {
+function getData(Node, baseTime) {
   event = {};
-  event.start = new Number(Math.floor(Node.attributes.renderStart));
-  event.end = new Number(Math.floor(Node.attributes.renderStart + Node.attributes.renderTotal));
+  event.start = new Number((Number(Node.attributes.renderStart) - Number(baseTime)).toFixed(2));
+  event.end = new Number((Number(Node.attributes.renderStart) + Number(Node.attributes.renderTotal) - Number(baseTime)).toFixed(2));
+  console.log('render start: ', Number(Node.attributes.renderStart));
+  console.log('rendered total: ', Number(Node.attributes.renderTotal));
+  console.log('base time: ', Number(baseTime));
+  console.log('final Number Object', new Number(Number(Node.attributes.renderStart) + Number(Node.attributes.renderTotal) - Number(baseTime)).toFixed(2));
   event.content = Node.name;
   event.title = Node.name;
   items.push(event);
   if (Node.children.length !== 0) {
     Node.children.forEach((child) => {
-      getData(child);
+      getData(child, baseTime);
     });
   }
 }
@@ -76,8 +74,8 @@ export const MainContainer: React.FC = () => {
         // save new tree
         treeGraphData = [message.payload.payload];
         setTree(treeGraphData);
-        getData(treeGraphData[0]);
-        isMounted = true;
+        getData(treeGraphData[0], treeGraphData[0].attributes.renderStart);
+        timeLineArray.shift();
         timeLineArray.push(items);
         items = [];
       }
@@ -95,16 +93,9 @@ export const MainContainer: React.FC = () => {
       <hr style={{ border: '2px solid black' }} />
       <div id="lineGraphDiv">
         <h2>TimeLine</h2>
-        <LineGraph data={items} options={options} />
-        {
-            isMounted
-            && <LineGraph data={items} options={options} />
-        }
         {
             timeLineArray.map((el, i, arr) => {
-                console.log('element: ', el);
-                console.log('array: ', arr);
-                return <LineGraph key={`Timeline${i}`} data={el} options={options} />;
+              return <LineGraph data={el} options={options} />;
             })
         }
       </div>
