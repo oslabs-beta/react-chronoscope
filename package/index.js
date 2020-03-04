@@ -5,7 +5,7 @@ class Node {
     this.name = name;
     this.parent = parent;
     this.children = children;
-    this.attributes = {
+    this.stats = {
       state: JSON.stringify(fiber.memoizedState),
       props: JSONStringify(fiber.memoizedProps),
       effectTag: fiber.effectTag,
@@ -117,17 +117,17 @@ function treeCreator(hostRoot) {
   const tempTreeGraph = JSON.parse(JSON.stringify(treeGraph));
   // recursively compare state and props in prevTreeGraph and treeGraph
   const compareStateAndProps = (node, prevNode, parentShapeProps) => {
-    // compare state and props properties on attributes properties for both nodes
-    // if same - treeGraph.attributes.stateOrPropsChanged - false
+    // compare state and props properties on stats properties for both nodes
+    // if same - treeGraph.stats.stateOrPropsChanged - false
     if (node && prevNode) {
       // check if the node's type is a string
       // yes? give it a color of the parent - because Composite Component renders(or not) Host Component
-      if (node.attributes.type === 'string') {
+      if (node.stats.type === 'string') {
         node.nodeSvgShape.shapeProps = parentShapeProps;
-        delete node.attributes.state;
-        delete node.attributes.props;
-      } else if (prevNode.attributes.state === node.attributes.state && prevNode.attributes.props === node.attributes.props) {
-        if ((node.attributes.effectTag === 0 || node.attributes.effectTag === 4) && wasMounted) {
+        delete node.stats.state;
+        delete node.stats.props;
+      } else if (prevNode.stats.state === node.stats.state && prevNode.stats.props === node.stats.props) {
+        if ((node.stats.effectTag === 0 || node.stats.effectTag === 4) && wasMounted) {
           node.nodeSvgShape.shapeProps.fill = 'gray';
         } else {
           node.nodeSvgShape.shapeProps.fill = 'red';
@@ -136,7 +136,7 @@ function treeCreator(hostRoot) {
         }
       }
 
-      // delete node.attributes;
+      // delete node.stats;
 
       // recursively invoke the function for each children
       if (node.children.length) {
@@ -145,10 +145,10 @@ function treeCreator(hostRoot) {
         }
       }
     } else if (node) {
-      // delete node.attributes;
-      if (node.attributes.type === 'string') {
-        delete node.attributes.state;
-        delete node.attributes.props;
+      // delete node.stats;
+      if (node.stats.type === 'string') {
+        delete node.stats.state;
+        delete node.stats.props;
       }
 
       // recursively invoke the function for each children
@@ -160,10 +160,10 @@ function treeCreator(hostRoot) {
     }
 
     if (!wasMounted) {
-      // delete node.attributes;
-      if (node.attributes.type === 'string') {
-        delete node.attributes.state;
-        delete node.attributes.props;
+      // delete node.stats;
+      if (node.stats.type === 'string') {
+        delete node.stats.state;
+        delete node.stats.props;
       }
       if (node.children.length) {
         for (let i = 0; i < node.children.length; i += 1) {
