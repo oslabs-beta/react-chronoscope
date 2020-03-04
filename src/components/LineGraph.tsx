@@ -8,15 +8,12 @@ import { ITimelineProps } from '../interfaces';
 // }
 
 
-
-const LineGraph: React.SFC<ITimelineProps> = ({ data, options }) => {
-  return (
-    <Timeline
-      options={options}
-      items={data}
-    />
-  );
-};
+const LineGraph: React.SFC<ITimelineProps> = ({ data, options }) => (
+  <Timeline
+    options={options}
+    items={data}
+  />
+);
 
 export default LineGraph;
 

@@ -94,9 +94,7 @@ export const MainContainer: React.FC = () => {
       <div id="lineGraphDiv">
         <h2>TimeLine</h2>
         {
-            timeLineArray.map((el, i, arr) => {
-              return <LineGraph data={el} options={options} />;
-            })
+            timeLineArray.map((el, i, arr) => <LineGraph data={el} options={options} />)
         }
       </div>
     </>
