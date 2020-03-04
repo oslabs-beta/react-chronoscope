@@ -14,15 +14,20 @@ export interface ITree {
     nodeSvgShape?: IShape;
 }
 
-export interface IProps {
+export interface ITreeProps {
     data: ITree[];
 }
-  
+
+export interface ITimelineProps {
+    data: any[];
+    options: object;
+}
+
 interface IShape {
     shape: string;
     shapeProps: IShapeProps;
 }
-  
+
 interface IShapeProps {
     rx: number;
     ry: number;
