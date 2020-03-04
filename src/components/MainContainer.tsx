@@ -12,14 +12,9 @@ let treeGraphData: ITree[] = [{
 // initialize port that will be upon when component Mounts
 let port;
 
-const timeLineArray = [];
+let items = [];
 
-let items = [{
-  title: 'Test',
-  content: 'Test',
-  start: 0,
-  end: 10,
-}];
+const timeLineArray = [];
 
 const options = {
   width: '100%',
@@ -52,10 +47,6 @@ function getData(Node, baseTime) {
   event = {};
   event.start = new Number((Number(Node.attributes.renderStart) - Number(baseTime)).toFixed(2));
   event.end = new Number((Number(Node.attributes.renderStart) + Number(Node.attributes.renderTotal) - Number(baseTime)).toFixed(2));
-  console.log('render start: ', Number(Node.attributes.renderStart));
-  console.log('rendered total: ', Number(Node.attributes.renderTotal));
-  console.log('base time: ', Number(baseTime));
-  console.log('final Number Object', new Number(Number(Node.attributes.renderStart) + Number(Node.attributes.renderTotal) - Number(baseTime)).toFixed(2));
   event.content = Node.name;
   event.title = Node.name;
   items.push(event);
@@ -68,6 +59,7 @@ function getData(Node, baseTime) {
 
 export const MainContainer: React.FC = () => {
   const [tree, setTree] = useState<ITree[]>(treeGraphData);
+  const [onMount, setOnMount] = useState(false);
 
   useEffect(() => {
     // open connection with background script
@@ -83,6 +75,8 @@ export const MainContainer: React.FC = () => {
         timeLineArray.shift();
         timeLineArray.push(items);
         items = [];
+        // render first timeline
+        setOnMount(true);
       }
     });
   });
@@ -98,9 +92,7 @@ export const MainContainer: React.FC = () => {
       <hr style={{ border: '2px solid black' }} />
       <div id="lineGraphDiv">
         <h2>TimeLine</h2>
-        {
-            timeLineArray.map((el, i, arr) => <LineGraph data={el} options={options} />)
-        }
+        { onMount && timeLineArray.map((el, i, arr) => <LineGraph data={el} options={options} />)}
       </div>
     </>
   );
