@@ -1,7 +1,7 @@
 <p>
 
 # React ChronoScope 
-git
+
 A package for traversing React Fiber Tree and extracting information.
 
 # Installing
@@ -22,10 +22,10 @@ render(
 ```
 
 # Authors
-[Jason Huang](https://github.com/jhmoon999)
-[Jimmy Mei](https://github.com/Jimmei27)
-[Matt Peters](https://github.com/mgpeters)
-[Sergiy Alariki](https://github.com/Serrzhik)
+[Jason Huang](https://github.com/jhmoon999)</br>
+[Jimmy Mei](https://github.com/Jimmei27)</br>
+[Matt Peters](https://github.com/mgpeters)</br>
+[Sergiy Alariki](https://github.com/Serrzhik)</br>
 [Vinh Chau](https://github.com/Vchau511)
 
 

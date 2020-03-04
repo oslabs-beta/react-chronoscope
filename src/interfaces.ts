@@ -8,17 +8,26 @@ export interface IMessageData {
 }
 
 export interface ITree {
-    name: string;
-    children: ITree[];
+    name?: string;
+    children?: ITree[];
     attributes?: any;
     nodeSvgShape?: IShape;
 }
-  
+
+export interface ITreeProps {
+    data: ITree[];
+}
+
+export interface ITimelineProps {
+    data: any[];
+    options: object;
+}
+
 interface IShape {
     shape: string;
     shapeProps: IShapeProps;
 }
-  
+
 interface IShapeProps {
     rx: number;
     ry: number;
