@@ -14,7 +14,12 @@ let port;
 
 const timeLineArray = [];
 
-let items = [];
+let items = [{
+  title: 'Test',
+  content: 'Test',
+  start: 0,
+  end: 10,
+}];
 
 const options = {
   width: '100%',
