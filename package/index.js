@@ -8,11 +8,10 @@ class Node {
         this.attributes = {
             state: JSON.stringify(fiber.memoizedState),
             props: JSONStringify(fiber.memoizedProps),
-            stateOrPropsChanged: 'true',
             effectTag: fiber.effectTag,
             type: typeof fiber.type,
-            // renderStart: fiber.actualStartTime,
-            // renderTotal: fiber.actualDuration,
+            renderStart: fiber.actualStartTime.toFixed(2),
+            renderTotal: fiber.actualDuration.toFixed(2),
         };
         this.nodeSvgShape = {
             shape: 'ellipse',
@@ -127,9 +126,10 @@ function treeCreator(hostRoot) {
             // yes? give it a color of the parent - because Composite Component renders(or not) Host Component
             if (node.attributes.type === 'string') {
                 node.nodeSvgShape.shapeProps = parentShapeProps;
+                delete node.attributes.state;
+                delete node.attributes.props;
             }
             else if (prevNode.attributes.state === node.attributes.state && prevNode.attributes.props === node.attributes.props) {
-                node.attributes.stateOrPropsChanged = 'false';
                 if ((node.attributes.effectTag === 0 || node.attributes.effectTag === 4) && wasMounted) {
                     node.nodeSvgShape.shapeProps.fill = 'gray';
                 }
@@ -140,7 +140,7 @@ function treeCreator(hostRoot) {
                 }
             }
 
-            delete node.attributes;
+            // delete node.attributes;
 
             // recursively invoke the function for each children
             if (node.children.length) {
@@ -150,7 +150,11 @@ function treeCreator(hostRoot) {
             }
         }
         else if (node) {
-            delete node.attributes;
+            // delete node.attributes;
+            if (node.attributes.type === 'string') {
+                delete node.attributes.state;
+                delete node.attributes.props;
+            }
 
             // recursively invoke the function for each children
             if (node.children.length) {
@@ -161,7 +165,11 @@ function treeCreator(hostRoot) {
         }
 
         if (!wasMounted) {
-            delete node.attributes;
+            // delete node.attributes;
+            if (node.attributes.type === 'string') {
+                delete node.attributes.state;
+                delete node.attributes.props;
+            }
             if (node.children.length) {
                 for (let i = 0; i < node.children.length; i += 1) {
                     compareStateAndProps(node.children[i]);

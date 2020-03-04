@@ -1,7 +1,7 @@
 <p>
 
 # React ChronoScope 
-git
+
 A package for traversing React Fiber Tree and extracting information.
 
 # Installing
