@@ -74,14 +74,6 @@ export const MainContainer: React.FC = () => {
         // save new tree
         treeGraphData = [message.payload.payload];
         getData(treeGraphData[0], treeGraphData[0].stats.renderStart);
-        // recursively deleting attributes - to avoid displaying them
-        // const deleteAttributes = (node) => {
-        //   delete node.attributes;
-        //   if (node.children.length) {
-        //     node.children.forEach((child) => deleteAttributes(child));
-        //   }
-        // };
-        // deleteAttributes(treeGraphData[0]);
         setTree(treeGraphData);
         timeLineArray.shift();
         timeLineArray.push(items);
