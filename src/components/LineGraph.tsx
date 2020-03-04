@@ -71,29 +71,6 @@ class LineGraph extends React.Component <{}, State> {
     });
   }
 
-  // componentDidUpdate() {
-  //   setTimeout(() => {
-  //     // open connection with background script
-  //     // const port = chrome.runtime.connect();
-  //     // port.onMessage.addListener(message => {
-  //     //   items = [];
-  //     //   tempData = getData(message.payload.payload.children[0]);
-  //     //   if (JSON.stringify(tempData) !== JSON.stringify(items)) {
-  //     //     items = tempData;
-  //     //     console.log('Timeline componentDidUpdate: ', items);
-  //         console.log('Updated state to: ', this.state.data);
-  //         this.setState({
-  //           render: false
-  //         });
-  //         this.setState({
-  //           data: items,
-  //           render: true
-  //         });
-  //   //     }
-  //   //   })
-  //   }, 20000);
-  // }
-
   render() {
     return (
       <div id="lineGraph" style={{}}>

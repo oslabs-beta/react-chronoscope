@@ -8,10 +8,14 @@ export interface IMessageData {
 }
 
 export interface ITree {
-    name: string;
-    children: ITree[];
+    name?: string;
+    children?: ITree[];
     attributes?: any;
     nodeSvgShape?: IShape;
+}
+
+export interface IProps {
+    data: ITree[];
 }
   
 interface IShape {
