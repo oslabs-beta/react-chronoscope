@@ -1,0 +1,27 @@
+  
+{
+    "manifest_version": 2,
+    "name": "React ChronoScope",
+    "version": "1.0.0",
+    "devtools_page": "devtools.html",
+    "permissions": ["activeTab"],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["contentscript.js"]
+      }
+    ],
+    "background": {
+      "scripts": ["backgroundscript.js"],
+      "persistant": false
+    },
+    "externally_connectable": {
+      "ids": ["*"]
+    },
+    "icons": {
+      "16": "./assets/ChronoScope.png",
+      "48": "./assets/ChronoScope.png",
+      "128": "./assets/ChronoScope.png"
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
