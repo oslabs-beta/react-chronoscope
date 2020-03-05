@@ -2,7 +2,7 @@
 import * as React from "react";
 import { useState } from 'react';
 import Tree from 'react-d3-tree';
-import { ITreeProps } from '../interfaces';
+import { ITreeProps, IShape } from '../interfaces';
 
 interface IStateAndProps {
   state?: any;
@@ -12,10 +12,12 @@ interface IStateAndProps {
 
 const TreeGraph: React.SFC<ITreeProps> = ({ data }) => {
   const [stateAndProps, setStateAndProps] = useState<IStateAndProps>({});
+  const [shape, setShape] = useState<IShape | null>(null);
 
   const handleHover = (e) => {
-    const { stats } = e;
+    const { stats, nodeSvgShape } = e;
     setStateAndProps(stats);
+    setShape(nodeSvgShape);
   }
 
   return (
@@ -24,6 +26,11 @@ const TreeGraph: React.SFC<ITreeProps> = ({ data }) => {
         <h3>State: {stateAndProps.state}</h3>
         <h3>Props: {stateAndProps.props}</h3>
         <h3>Render Time: {stateAndProps.renderTotal}</h3>
+        {
+          shape &&
+          shape.shapeProps.fill === 'red' &&
+          <h1 style={{ color: 'red' }}>Optimize Performance: Use Should Component Update, or React.PureComponent, or React.memo</h1>
+        }
       </div>
       <Tree 
         data={data} 

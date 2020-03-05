@@ -23,7 +23,7 @@ export interface ITimelineProps {
     options: object;
 }
 
-interface IShape {
+export interface IShape {
     shape: string;
     shapeProps: IShapeProps;
 }
