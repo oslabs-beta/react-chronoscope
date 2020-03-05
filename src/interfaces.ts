@@ -33,3 +33,10 @@ interface IShapeProps {
     ry: number;
     fill: string;
 }
+
+export interface IStateAndProps {
+    name?: any;
+    state?: any;
+    props?: any;
+    renderTotal?: any;
+}
