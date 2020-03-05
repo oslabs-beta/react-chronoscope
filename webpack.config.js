@@ -3,7 +3,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  // TODO: change the path
   entry: {
     contentScript: path.join(__dirname, './src/contentScript/contentScript.ts'), // path.resolve(__dirname, './src/index.tsx'),
     backgroundScript: path.join(__dirname, './src/backgroundScript/backgroundScript.ts'),
@@ -28,7 +27,6 @@ module.exports = {
         exclude: /node_modules/,
         use: { loader: 'ts-loader' },
       },
-      // addition - add source-map support
       {
         enforce: 'pre',
         test: /\.js$/,
@@ -72,10 +70,5 @@ module.exports = {
       chunks: ['devtools'],
     }),
   ],
-  // externals: {
-  //   react: 'React',
-  //   'react-dom': 'ReactDOM',
-  // },
-  // addition - add source-map support
   devtool: 'source-map',
 };
