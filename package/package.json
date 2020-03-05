@@ -1,0 +1,12 @@
+{
+  "name": "react-chronoscope",
+  "version": "3.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["react", "hierarchy", "components", "fiber"],
+  "author": "ChronoScope",
+  "license": "ISC"
+}
