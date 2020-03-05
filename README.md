@@ -50,6 +50,7 @@ After installing both the Chrome Extension and the npm package, run the react ap
      red - component was unnecessarily re-rendered. </br>
 
 - Timeline that illustrates when each component renders. 
+
 </p>
 
 ## Team
