@@ -54,7 +54,7 @@ function JSONStringify(object) {
       }
       return value;
     }, 4);
-  cache = null; // ngarbage collection
+  cache = null; // garbage collection
   return string;
 }
 
@@ -187,7 +187,6 @@ module.exports = function (container) {
   window.addEventListener('click', () => {
     // check if the hostRoot is new - only then invoke
     setTimeout(() => {
-      console.log('click', hostRoot !== fiberRoot.current);
       if (hostRoot !== fiberRoot.current) {
         treeCreator(fiberRoot.current);
       }
@@ -196,7 +195,6 @@ module.exports = function (container) {
   window.addEventListener('keyup', () => {
     setTimeout(() => {
       // check if the hostRoot is new - only then invoke
-      console.log('key', hostRoot !== fiberRoot.current);
       if (hostRoot !== fiberRoot.current) {
         treeCreator(fiberRoot.current);
       }

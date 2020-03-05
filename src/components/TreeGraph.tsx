@@ -2,14 +2,7 @@
 import * as React from "react";
 import { useState } from 'react';
 import Tree from 'react-d3-tree';
-import { ITreeProps, IShape } from '../interfaces';
-
-interface IStateAndProps {
-  name?: any;
-  state?: any;
-  props?: any;
-  renderTotal?: any;
-}
+import { ITreeProps, IShape, IStateAndProps } from '../interfaces';
 
 const TreeGraph: React.SFC<ITreeProps> = ({ data }) => {
   const [stateAndProps, setStateAndProps] = useState<IStateAndProps>({});
@@ -43,15 +36,15 @@ const TreeGraph: React.SFC<ITreeProps> = ({ data }) => {
         <h5>Render Time: {stateAndProps.renderTotal}</h5>
       </div>
       <div style={{'height': '500px'}}>
-      <Tree 
-        data={data} 
-        orientation="vertical" 
-        translate={{ x: 300, y: 20}} 
-        zoom={0.45} 
-        separation={{ siblings: .6, nonSiblings: .6 }}
-        onMouseOver={handleHover}
-        onMouseOut={handleUnHover}
-      />
+        <Tree 
+          data={data} 
+          orientation="vertical" 
+          translate={{ x: 300, y: 20}} 
+          zoom={0.45} 
+          separation={{ siblings: .6, nonSiblings: .6 }}
+          onMouseOver={handleHover}
+          onMouseOut={handleUnHover}
+        />
       </div>
     </div>
   );

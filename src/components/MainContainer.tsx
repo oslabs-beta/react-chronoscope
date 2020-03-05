@@ -31,26 +31,14 @@ const options = {
   selectable: true,
   horizontalScroll: false,
   verticalScroll: true,
-  // editable: true,
 };
 
 let event;
-
-interface Event {
-    title: string,
-    content: string,
-    start: any,
-    end: any,
-}
 
 function getData(Node, baseTime) {
   event = {};
   event.start = new Number((Number(Node.stats.renderStart) - Number(baseTime)).toFixed(2));
   event.end = new Number((Number(Node.stats.renderStart) + Number(Node.stats.renderTotal) - Number(baseTime)).toFixed(2));
-  console.log('render start: ', Number(Node.stats.renderStart));
-  console.log('rendered total: ', Number(Node.stats.renderTotal));
-  console.log('base time: ', Number(baseTime));
-  console.log('final Number Object', new Number(Number(Node.stats.renderStart) + Number(Node.stats.renderTotal) - Number(baseTime)).toFixed(2));
   event.content = Node.name;
   event.title = Node.name;
   items.push(event);

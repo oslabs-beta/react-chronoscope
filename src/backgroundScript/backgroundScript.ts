@@ -6,13 +6,13 @@ let treeGraph;
 let currentPort;
 
 // listen for connection from the chrome dev tool;
-chrome.runtime.onConnect.addListener(port => {
+chrome.runtime.onConnect.addListener((port) => {
   // save the port
   currentPort = port;
   // send message to Chrome Dev Tool on initial connect
-    port.postMessage({
-      payload: treeGraph,
-    })
+  port.postMessage({
+    payload: treeGraph,
+  });
 });
 
 // listen for message from contentScript
@@ -22,8 +22,7 @@ chrome.runtime.onMessage.addListener((msg: IMessageData) => {
   // once the message is accepted from content script, send it to dev tool
   if (currentPort) {
     currentPort.postMessage({
-      payload: treeGraph
-    })
+      payload: treeGraph,
+    });
   }
 });
-
