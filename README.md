@@ -44,10 +44,13 @@ After installing both the Chrome Extension and the npm package, run the react ap
 ### Features
 - Node-collapsible tree diagram that displays all hierarchy tree components of a React application. 
 - Each Node has information vital for debugging and development such state, props and how optimized is the rendering process.
-- Color legend: 
-    <font color="grey"> grey </font> - component was not re-rendered 
-    <font color="green"> green </font> - component was re-rendered 
-    <font color="red"> red </font> - component was unnecessarily re-rendered. 
+- Color legend: </br>
+    <p>&#x1F534</p>
+    <p>&#x1F7E2</p>
+    <p>&#x26AA</p>
+    <span class="text-grey"> grey </span> - component was not re-rendered </br>
+    <font color="green"> green </font> - component was re-rendered </br>
+    <font color="red"> red </font> - component was unnecessarily re-rendered. </br>
 
 - Timeline that illustrates when each component renders. 
 </p>
