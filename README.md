@@ -42,6 +42,14 @@ render(
 After installing both the Chrome Extension and the npm package, run the react application in the browser. Then open Chrome Developer Tools (Inspect) on the React Application and click on ``` React ChronoScope ``` at the top of the Developer Tools panel.
 
 ### Features
+- Node-collapsible tree diagram that displays all hierarchy tree components of a React application. 
+- Each Node has information vital for debugging and development such state, props and how optimized is the rendering process.
+- Color legend: </br>
+     grey - component was not re-rendered </br>
+     green - component was re-rendered </br>
+     red - component was unnecessarily re-rendered. </br>
+
+- Timeline that illustrates when each component renders. 
 
 </p>
 
